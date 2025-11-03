@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student's Form</title>
+</head>
+
+<body>
+    <h1 align="center">Student's Admission Form</h1>
+    <h4 align="center">Fill all the details </h4>
+
+    <style>
+        label {
+            color: blue;
+            vertical-align: top;
+        }
+    </style>
+
+    <!-- Task -1 Task-2, Task-3, Task -4, Task-5 and  Bonus- Task -->
+
+    <form action="https://formspree.io/f/xpwogwrv" method="POST" align="left">
+        <label for="Photo">Photo upload:</label>
+        <input type="file" required> <br> <br>
+
+        <label for="Name">Name: </label>
+        <input type="text" placeholder="name" required> <br> <br>
+
+        <label for="Age">Age:</label>
+        <input type="number" min="5" max="8" required> <br><br>
+
+        <label for="DOB">Date Of Birth: </label>
+        <input type="date"> <br> <br>
+
+        <label for="Gender">Gender:</label>
+        <select name="Gender">
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="">others</option>
+        </select> <br> <br>
+
+        <label for="">If Others, Mention it:</label>
+        <input type="text" placeholder="any"> <br> <br>
+
+        <label for="Blood Group">Blood Group:</label>
+        <select name="Blood Group">
+            <option value="">Select</option>
+            <option value=""> AB+ve </option>
+            <option value=""> AB-ve </option>
+            <option value=""> O+ve </option>
+            <option value=""> O-ve </option>
+        </select> <br> <br>
+
+
+        <label for="Nationality">Nationality: </label>
+        <select name="Nationality">
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="Australia">Australia</option>
+            <option value="Brazil">Brazil</option>
+            <option value="French">French</option>
+        </select> <br> <br>
+
+        <!-- checkbox -->
+
+        <label for="Parent & gaudrain">Parent / gaudrain:</label>
+        <input type="checkbox" name="type" value="Parent">Parent
+        <input type="checkbox" name="type" value="Gaudrain">Gaudrain <br> <br>
+
+
+        <label>Religion:</label>
+        <input type="text" name="religion" placeholder="type"> <br> <br>
+
+        <label>Community:</label>
+        <input type="text" name="community"><br> <br>
+
+        <label>Aadhar Number:</label>
+        <input type="text" name="aadhar" maxlength="12"><br> <br>
+
+        <label>Phone number:</label>
+        <input type="text" name="phone" required><br> <br>
+
+        <label>Email:</label>
+        <input type="email" name="email"> <br> <br>
+
+
+        <label for="Address">Address:</label>
+        <textarea name="Address" rows="4" cols="25" placeholder="write here" required></textarea> <br> <br>
+
+
+        <label for="TC">TC certificate:</label>
+        <input type="file" required> <br> <br>
+
+
+        <label for="activites">Extra circular activites:</label>
+        <input type="file" required> <br> <br>
+
+        <label for="Parent number">Parent's Number:</label>
+        <input type="text"> <br> <br>
+
+        <label for="Annual income">Annual income:</label>
+        <input type="text"> <br> <br>
+
+        <label for="Disablity">Disablity:</label>
+        <input type="radio" name="check" value="Yes">Yes
+        <input type="radio" name="check" value="No">NO <br> <br>
+
+        <label for="Mother Tongue">Mother Tongue: </label>
+        <select name="Mother Tongue">
+            <option value="Select">Select</option>
+            <option value="Tamil">Tamil</option>
+            <option value="English">English</option>
+            <option value="urudu">Urudu</option>
+        </select> <br> <br>
+
+        <label for="Ocuuption">Parent's Ocuption:</label>
+        <input type="text"> <br> <br>
+
+        <!-- radio button -->
+
+        <label for="">did all the documents submitted?</label>
+        <input type="radio" name="yup" id="Yes" value="true">
+        <label for="Yes">Yes</label>
+        <input type="radio" name="yup" id="nO" value="False">
+        <label for="no">NO</label> <br> <br>
+
+
+        <label for="Submit"></label>
+        <input type="submit"> <br> <br>
+        <input type="reset" value="Reset">
+
+    </form>
+
+</body>
+
+</html>
