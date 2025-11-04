@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> My profile card</title>
+</head>
+<style>
+    .about {
+        justify-self: start;
+        color: green;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 20px;
+        border: 3px solid;
+        padding-bottom: 50px;
+
+    }
+
+    #name {
+        color: orangered;
+        padding-bottom: 20px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 20px;
+    }
+
+    footer {
+        border: 4px solid;
+        border-radius: 30;
+        font-style: italic;
+        color: darkorchid;
+        padding-bottom: 20px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 20px;
+
+    }
+
+    body{
+        background-image: url(data:image/png;base64,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);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        
+    }
+</style>
+
+<body>
+    <header id="name" align = "center">
+        <h1>Kishorre R P</h1>
+    </header>
+
+    <main>
+        <section class="about">
+            <h2 align = "center"><b>About me</b></h2>
+            <p>I am pleased to introduce about myself. <br> <b>I am Kishorre R P</b>, I am from Oldwashermenpet Chennai,
+                a developing locality that reflects hardwork and culture. I have completed my Bachaleor of engineering
+                in computer Science from Agni college of technology at
+                Chennai.<br> I always fasinated about how the code works on the computer. When I do more research about
+                I saw
+                <b>"Java programming"</b>To know more about it I enrolled Java fullstack at SLA to gain pratical
+                knowledge about it. I enjoy studying and researching about Astronomy like space and life
+                related things. one of the things I came up from the research is <b>" Humankind is not the problem to
+                    solve, Humankind
+                    is the mysteries to live"</b>. I also watch movies to motivate and improve myself. My faivourate
+                movie is none,
+                as we can't take one movie as faivourate from a group of good movies.
+            </p>
+        </section>
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>&copy;Made By me</p> <br>
+        <a href="http://127.0.0.1:5500/Day%201/task.html" target="_blank"> Click here!</a> <br>
+        <p>To find more about me!</p>
+    </footer>
+
+</body>
+
+</html>

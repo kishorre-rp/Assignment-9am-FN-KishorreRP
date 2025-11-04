@@ -1,0 +1,32 @@
+h1{
+    font-style: italic;
+    color: magenta;
+    padding-bottom: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 50px;
+}
+
+h2{
+    width: 30px;
+    color: magenta;
+    justify-self: start;
+    letter-spacing: 3px;
+    padding-bottom: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 50px;
+}
+
+p{
+
+    justify-self: start;
+    color:rgb(6, 248, 46);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+body{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRziXjJbJc6SRzImWaZF03Feoh-5oshNc5Bew&s) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
