@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute Selectors</title>
+    <style>
+        input[type ="text"]{
+            color: red;
+            font-style: italic;
+            font-size: 20px;
+            background-color: aqua;
+        }
+
+        input[type = "password"]{
+            color: blue;
+            font-size: 20px;
+            background-color: cornsilk;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="color: crimson;" >Google forms</h1>
+    <br> <br>
+    <form action="">
+        <table >
+            <tr>
+                <th>
+                    <label for="name">Name:</label>
+                    <input type="text">
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label for="Age">Age:</label>
+                    <input type="text">
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+
+            <label for="password">Password:</label>
+            <input type="password">
+            </th>
+            </tr> 
+            <tr>
+                <th>
+            <input type="submit">
+            </th>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>
