@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: brown;
+        }
+
+        .container {
+            width: 90%;
+            width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+
+        #header {
+            background-color: darkblue;
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            display: inline-block;
+            text-align: center;
+            padding-left: 700px;
+        }
+
+        .navbar {
+            float: right;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .navlink:hover {
+            color: lightblue;
+        }
+
+        main {
+            margin-top: 60px;
+        }
+
+        #hero {
+            background-color: #3498db;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .herotitle {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .herotext {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+        }
+
+
+        section {
+            padding: 60px 0;
+        }
+
+        .sectiontitle {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #2c3e50;
+        }
+
+        .contentbox {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+
+        #about {
+            background-color: white;
+        }
+
+
+        #services {
+            background-color: white;
+        }
+
+        .servicesgrid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .servicecard {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 5px;
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .servicecard h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: gray;
+        }
+
+        /* Footer */
+        #footer {
+            background-color: darkgray;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <h1 class="logo">My Website</h1>
+        <p align="center">Home | contact | About us</p>
+
+    </header>
+
+
+    <main>
+
+        <section id="hero">
+            <div class="container">
+                <h2 class="herotitle">Welcome to My Website</h2>
+                <p class="herotext">This is a simple website layout </p>
+                <a href="#about" class="btn">Learn More</a>
+            </div>
+        </section>
+
+
+        <section id="about">
+            <div class="container">
+                <h2 class="sectiontitle">About Us</h2>
+                <div class="contentbox">
+                    <p>We create simple and beautiful websites that are easy to use and understand.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="services">
+            <div class="container">
+                <h2 class="sectiontitle">Our Services</h2>
+                <div class="servicesgrid">
+                    <div class="servicecard">
+                        <h3>Web Design</h3>
+                        <p>Creating beautiful and functional websites.</p>
+                    </div>
+                    <div class="servicecard">
+                        <h3>Development</h3>
+                        <p>Building websites with clean code.</p>
+                    </div>
+                    <div class="servicecard">
+                        <h3>Support</h3>
+                        <p>Helping you maintain your website.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="sectiontitle">Contact Us</h2>
+                <div class="contentbox">
+                    <p>Email:Kishorrerp21@gamil.com</p>
+                    <p>Phone: 7358334990</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
