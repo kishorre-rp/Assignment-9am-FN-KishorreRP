@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task 6 to 10</title>
+    <style>
+        
+
+
+          /* Task-6, Task-7, Task-8, Task-9, Task-10 */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Fixed and sticky navigation bar styles */
+        .navbar {
+            width: 100%;
+            background: #333;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+        }
+
+        .navbar a {
+            color: #fff;
+            padding: 16px 22px;
+            text-decoration: none;
+            font-size: 1.12em;
+            letter-spacing: 1px;
+            transition: background 0.2s;
+        }
+
+
+        /* Hero section with overlay text and background */
+        .hero {
+            height: 480px;
+            background-image: linear-gradient(rgba(84, 59, 59, 0.38), rgba(21, 20, 20, 0.38)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 60px;
+            /* Offset for navbar */
+        }
+
+        .hero-text {
+            color: #fff;
+            text-align: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            text-shadow: 0 3px 18px rgba(0, 0, 0, 0.3);
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+
+        /* About section styling */
+        .about-section {
+            max-width: 800px;
+            margin: 64px auto;
+            padding: 32px;
+            background: white;
+            border-radius: 10px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 40px;
+            color: #222;
+            letter-spacing: 3px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Floating 'Contact Us' button */
+        .contact-btn {
+            position: fixed;
+            bottom: 36px;
+            right: 36px;
+            z-index: 1200;
+            background: #2196f3;
+            color: #fff;
+            padding: 16px 28px;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 16px rgba(33, 150, 243, .25);
+            cursor: pointer;
+            font-size: 1.08em;
+            letter-spacing: 3px;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+
+        .contact-btn:hover {
+            background: #1976d2;
+        }
+
+        /* Sticky header */
+        .sticky-header {
+            position: sticky;
+            top: 60px;
+            /* Height of navbar */
+            background: white;
+            padding: 18px 0;
+            font-size: 20px;
+            color: #1976d2;
+            font-family: inherit;
+            border-bottom: 1px solid #eee;
+            z-index: 100;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Fixed Navigation Bar -->
+    <nav class="navbar">
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            Welcome to My Page<br>
+           
+        </div>
+    </section>
+
+    <!-- About Section with Readable Fonts/Letter-Spacing -->
+    <div class="about-section" id="about">
+        <div class="sticky-header" font-size="30px">About</div>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque consequatur maxime est vero nihil enim
+            nemo sit adipisci soluta tempora porro impedit sunt, repellendus voluptas ipsum suscipit ratione dignissimos
+            debitis minima iste repellat perspiciatis? Vero totam sapiente, animi dolorum esse, dolor ullam dignissimos
+            aperiam magnam nemo dolorem eaque corporis nihil suscipit, facere laboriosam perferendis! Porro recusandae
+            minima impedit asperiores, earum cumque? Error tempore itaque obcaecati consequatur amet illum totam dicta
+            facere facilis molestiae assumenda, nobis adipisci quod, numquam sed vitae voluptatum expedita architecto
+            quo quis esse veniam cupiditate recusandae nemo. Nostrum, recusandae ea voluptas perferendis quod totam
+            blanditiis quos iusto.
+        </p>
+    </div>
+
+    <!-- Floating Contact Button -->
+    <button class="contact-btn">Contact Us</button>
+
+
+</body>
+
+</html>
