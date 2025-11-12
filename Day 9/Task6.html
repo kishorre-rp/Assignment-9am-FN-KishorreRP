@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex 3- column layout</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px;
+        }
+
+        .flex-item {
+            background-color: #90cdf4;
+            border: 2px solid #2b6cb0;
+            padding: 20px;
+            flex: 1 1 30%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="flex-item">Column 1</div>
+        <div class="flex-item">Column 2</div>
+        <div class="flex-item">Column 3</div>
+    </div>
+</body>
+
+</html>

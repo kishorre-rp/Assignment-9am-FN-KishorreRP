@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic equation</title>
+    <style>
+        * {
+            margin: 10px;
+        }
+
+        body {
+            background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUTEhMWFhUXFxgYGBcYGBgXGBgYGBcXGBYYGhgYHSggGBolGxcXITEiJSkrLi4uGB8zODMtNygtLisBCgoKDg0OGhAQGy0lHyUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALMBGQMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAADBAECBQAHBv/EAD8QAAEDAgMFBAgDBgYDAAAAAAEAAhEDIQQxQRJRYXHwBYGRoQcTIpKxwdHTMlPhFyNCQ1LxBhQVYnLSNKPC/8QAGAEAAwEBAAAAAAAAAAAAAAAAAQIDAAT/xAAjEQACAgICAwEBAQEBAAAAAAAAAQIRAyESMQQTQRRRYXEi/9oADAMBAAIRAxEAPwD2Ws+oHsDWtLDO24ugtiNkAReZd4RrKJWLgDsgE7iYXiw9LmP/ACsN7lT7qOz0q4/WnhtD+CprcfzFlsm8kUew4hzg0lol0WHRE8pE7wowbnlgNQAOkzAi20dmxJj2YOa8kd6UsaP5eH9yp9xC/atjvy8P7lT7iNA90T1eti6+3Ua2lIDJpk2DqgEwTo0yBw2XbwhMx2KvOGFmkj942XO9mGjd/Fc7hkvMP2q478vD+5U+4o/atjvy8P7lT7izTQv6IM9RGOxUf+Le9vWtiZdEmNwBtP4ovmncJVqOYS9gY6XQ0O27AnZMgDMQY4ryIelfG/l4f3Kn3EQelPGf0Yf3Kn3OaWw++J6qyvV1b5H6qzq1SPw+R+q8md6Usd+Xh/cqfdVT6VMf+Xh/cqfdQ5oPuiesnEVokUgT/wAgLTkdxj5qXYirpS3z7QiLxHEwPFeTO9KuO/Lw/u1PuKv7V8b+Xh/dqfcRs3uieyUXEtBc3ZJ0zhEXklP0lY31XrTToRtbDYa/MCTP7zlbilz6VMb+Xh+Hs1PuLSko9g98T2NcvHGelHHGPYw1/wDZUt/7FoUPSNiTtBwoz/AWseWkg5OBqggEajwKEZKXQfdE9TXL4fs3/FmIqZimOTXHy27r6XD41zs4i199ict+XmnoaM1Lo01yxcT2o9hOUXvB4ePdaywu0f8AF1an+EU9cwd3ByD0P8s+3XLyat6SsWDAZQ72v+4iUfSPiyLso+6//ustkZZ4R7PVVy8lr+krGN/l0PcqfcR8D6RcU+ZZRy0a/ORn+8sM++Eyi26Qv6cZ6muXmlb/AB9ihkyl7rv+6C70hYv+ij7r/uKnpkJ+3EeooGNe9rHGm0OdoO/oxad4zHlGI9JuNbkzD+5U+4uHpQxXqS4ih63bgMFOpGxAO0T6y5m0KTi0UXkQZ6thXudTa57dlxF2zMHdz6k5pbGVK4ewU2tLCWhxObfa9owXC2yNJMkWiV5a30oY4/y8P7lT7ipU9KeNH8vD+5U+4k5K6GWaLPVu0sS9jRsMLiXN0cQG7Q2p2WmDBPgeRviqrhT2mAySz+EkgFzdr2ReQ0m3BeRH0rY78vDe5U+4qn0s478vDe5U+6jyD7Ynp+BxmIOD9ZWbsVvbkAFsAVHBh2SSRLA096p/h7HVahd6w5C3ivMT6W8d+XhvcqfcUftbx35eG9yp91C0H2I9oYTJnIRGe6/NZK8td6WscI/d4a9/wVOI/N4LL/anjv6MP7j/ALiNoymmfEVcQWuIiQAHcmg+34WPeiuxrhaDILASY1LBHg7PgisRUqItqxf/AFKdm34ri+UlrfH2sleh2mI2i0xE2Mn8Dn//AAfJEYEzSq7OXWhTxYkqro06FDaYHRHCZsDEzyv3pbE0I5K9LHHKSI0Q8TVlXnKLWjmhjknsSnPfpfxlS1xQ4Jk7s0Rq43Z1uKDNci7QkWiY18+Cv2a5gqAvMNuCY2iA4ESBaYme5CFM/wBvH5pk1RH1uwhpyza/3Fsa2Avx+Vt6HUpsc+Ww1t4BOjRIneTlxKcNK3CSRbfnfuCB/ljeORyzmQB4LNleFCpOYBOznHHlvufFcHJmrQhn4bk/indpHzVMO1+y5gaCHQSTM+zkReN+c58kjVgcLJY4deaew1SNMzY/25jwQaWGy49RZNNpfpEa5pYRkmCq0fTdiYmI819rg8dDd2py8SvNuzZEL6RmPaxo23BsmBJi/QXTB2PHRo9q9p5r47tLtDaJBMeeqfx9YOcJcAJuTJEcgvnn09onTx35ZmLfBGSYryu6FqlQkhwLgRkdrISe8Zozd4EZW7rnIWkeeqNTwyYZSA6I04ZplHRGabZk4ki0zx8+Ke7NqECATBiRkJA1GsXuoxWHyyynxJz4o+EpbIJGcR3HMIQlTFeO0Eqv8jHCYBjwI8UM1BvSOPqG3GfAEj5FJ+tcuhZ10c78d9hMc5IbQnOEaoSR1ZKPn5cuK5JzuR2wwpRGWm3XL5FCdzQ2VCuc/VK2mZR4nYiP4crZ74E675QDWsRAzBnWwOXAz5BEcJjQExOmk/EIThqCMz5a8rpWykWmMdlNa6tTDnNDS4bRd+ENzcfCdNyWqEbRj8MmOU28lAauBIniP1QvVDVuyKpvlCTTaV2Vh0aDmR19FErSfQlDdhVZ42jmWRMQbKLvsMvDj1vViyFZIkUlJEYdpTFUWQgVLnp+OhOewDm9acFZrdTPX6qwEphlO2WWfBI4/wAKKafYGnkN8md0WiPNOUgky8Ap7CYhkPa8uAc0iWxmPaE8NoN+ohHHX02S+kaDANnrn9VNPyJ1AzF7cp03hZ1PForaxsTYG48YJHePJLKX8LQxqlbNdmEDoHj5RHmiv7OaBlu063IeAqEx1u/XwWhiJLevBaEJPs0nD4fNYmpsOt0VNLEXg8ty5zS2qHFhdn7IME56wYjPu0zStHDukG85nO19833yqJaI65n0OFrBVxfaBE2ngWhwvYyDwJ8UfB4FxAm5gQ0ZxlYcyk+0GPaC1pdsviQBc7hvGeSCi1srOUWqQvSxjrPj2WubJkAyLwJ1jgVOEqyVjCm6Y2b336Z9cFs9kUCbWMgTbIzpOvJPKTapHPjiuWxutVAHXH6rPfiJOcDfu7lq4vs10ZHj13+Sxq+DcNFJKaLyUJMvRrd6erOIB6+CTwhGXI6WiQeN7LSqhuyOU+I/Vc8szixniUujIazaMk3mI15rTo9nAjJJBwDluYPFtDVfFJdsjkxt6RiYzs8t0WXiMMJMZTblovou08S1wI4zvmDlfesWqb26Ct/5ZLjJCbsOhuw3itCMp1AI5HVUfVCk0rG4yaMp9IhVxJZ7OyL7PtHKXSfgIEo9dwMpXZStV0aEa7OCiUb1h2S0C3RQgIRoZN/SIWn/AKfT/p8z9UoBtOJjOT81tbCah4MA+qAqOrBKOeY64/VUp03OcGgSSQAN5K6p5L0jhxw49hHCV3q+vBRQKPKioNhllSBCmrCkiSrAqscZGWYrTpXhFc8hrmg2OY0MG08iqSrtF5G/W/KdE7xqhY5nZm1Bna+h3b1X1ZWo3CSnKWCnd4KX52dP6kY1HDOK2MJ2cTGf06+a0MPhGhNmo0eyDDnAxw+mapDx0uwS8hsPgcIGhPOqMc0QQZkDib252PgUi7Ee0GtB3uMeyBBAE77ZboR6MQHBpOoAzuNAdY+auopLRH2SsqOzSXAixveYI3QQnMJ2K0XT9BozQ39phtRtED23AEF1mgkEgWGcNeY/25rOER4zdmhhsGwaX2TeDYc48ljdudlOdGzaMzvAaTAyzMCeK+jovznLqVbEsaYBGckZxaBf3sknFF27R5q/sZwjaAJAEmJkjXj3rZ7C7Pg3C2q9FpuNCR4ZqKADeCb1xIKckwraI9uY2ZlpB1AAcDuMjz5rG7V7OkkjKLDvvfwi41z03qpBF+N9RIieaRxZIZq42yzNxfcPgjwVBnkPhsVgHNNkvWqPA1sPKw+gX2eKotM5LJxmBEGNYnumPiVzz8KL2GPmNaPlX1TIESc88wQDmqN7SP6JzH4MDMGJAkZ7hwiUhiOz3tcWxMCd0iJBvfK/9lzTwtaOvFnTGP8AMGATk4SO4keRBtwQauIJ4pb1Z1tBjxlV2OjxFrC6FOjWhyjVJRXUSgdnEDa2rkiAIm8i8zaBK02BdGHCpKzl8jyHHSMp2GvlKH/l1sOYEJ1NUfjI5/1sQptLZjUQeR+CoWBPFnXXV0N1NTeBjLyLE32WrtrPrUlpeqUpQaZ2YMiaMgFEpVS1wc0wQZBCDKkOV1BHC8rYRpRdpACIAqJURk29ssCi0xe66k1MFkJ0IWZhpquYHCNqGmREEAtkjgQrYe+YggkEbiDBCq2pGWkc13rfE35k5lZWNa+DYIRBWWf6wwTuie8x8V20ZjhPdG18E1mNMYlEa8l4OYDYvnMyQNwsOaz6QK0cMxFKw8mP0iYJAmxI4mLCOaP2G47BDnFxD3N2rSQCQ023gZ8t6C2sGloM+0YFjEwTc6WBTjKt+FpO6THzCathT/w0KNTjoN3jbUq5pBxYT/C7aHgQJ8SkWOG0GudmSBxsdRw+C1KKDKQY1Txey7ZIMQSXxDWgCSZ6+KbbUZUYCPaa5tpBEgjis3tL1nqKnqhL4sCAZE+0INiYmyN2JXe+kPWABwL2WGyCGO2Q4CTAIE2ylSfZ1xfwnFNN5iNFl1c+G7ritavN5g7rRbcsnEBOiOTRdtbO/nyFkOs5LetI0JsTxmRAA6yVnVCQDG6x03p0QkwFV6Xc6UWqEuVRHOwbsOHSCO5L18DMkzN768bp+k7f0EV4kdaJJRTOjHJpHzFfs8JN2AX0NWmGw0WAsBySrwEvqi0LLLKzHZhYR2iE0Wy7ZAJOdsmgancgvatGKXQk5OXZWyqUOqDbKxkzqFWr7QgnOfMQjf8AhKl/SXIbldz5AsLAC03gRN965bs3QFyU9Yd58SnyJySeypzRfE3sAFIKcqYaAImZvuiPjxS1VsKdDMLRATL2hINeibZIJF4ufFNYoUOhSaqX21O+/HzWsSgvrF20hviRBmwOWsSR8lcBZMzVFwmqIym/NBphNUgnSMNYdifpFIMdBA4TPfF0dr0yCPCpc7rR1zV/WnToapFtREa/ru/VMazVw9S4PXFaHrHOaAwgGbmcojKxnWyxKL7jl5/2haXZcAWEXOc5zBzQZSDNlnrGsfskOcZLZsB7IgQIm4365p2k52y3ajagbUZTF470ph3mBMTF4y7kakNlsSTAiSSSeZU2jsizq5WL2i1xHsu2TvgHQ7+MHuWpVdZY78QHiW77zII7t6KRLIxd7yDEiI75m55XQ21jrHjNtFFY3kZ79eCVr1w1snjx/iMARnaE6OVjTn9d/wBEjQpFv4nFzjtSSfZ/EC3Zb/CQLZmbq4qbwRvBzEEgiN+a4vTdit0dtojcQfLr5oBS9SS9gMhsy+DBgaT4oyYYjld4Kz3uRXOz3X4oD0RGwWz7W1JmIO4qHqNrTnbhv5KjnJVQG2UeEFwRidOrAk+QQ3LCC7sj3fOfiPBQXIjhlwMoTgkoe9EbZtfn4JfbRSEqklZWGxl2KKXc+UMFdKjyKcS8q/rMoEWvxvu8PBBlTK1m40XlcAqhXamQrLtR2BBajtTomximbRoYPhkmKfy+seaXpo7CmQLGGK4cg7WXAEd0zffr4ldtJjB2mI65IocPLzn6JVp0RKLgYvGRmY4j4LWZGhQOS1sIehOUeRWHhXZStnCORHibFF+WfW9GdVIBMADifokqFS5EiRpN4OR4I7oOaB0p6Oq1NVm1n28fHVNYqCCDYRFtyziwgQTO48NBxjesic2K13pUmbZlHxLQc9LpOoevgiyJznrhVQS63GeHx6yVZt1x/TxWTFY4HqqXbUVw++doy4zr3fFNZkQ4Rkhkq7ihORFZR5EpaqTpw65IpFwTBz7p6BsqOQZgbs9/FVc5S4IL2AzImerbkrFVfSweCJBVSrF1gNBlwQyVg/8ACjh+qTTrkrI6/spzLYxeV0qsolKmXGBxJ4AXJXKdbRClqr4qUyEkiwR6LWmdokQJECZO7ghFhABOTpg8okcM0SiJIExJzVERkXpjejsQQCCQcwYRWOTonLsO0om2M+AnuS7XIjanwjuy+BhMAOHKQ5Ba4W535LgVrNQcPRaV7AaHLhc+SVZ8+5MUHkEEGCLg/DzWRh/DEGIWxhDksfCLWwzrbviqIKNKi7hGl4uOEHJFc4xIz4yBpKWpu0UVwXNs7Zda40Iz7kC6egtV3687JKu5NVXrMYwhp2nSQe/XyiFhZMBXckqrkzXEyClKo/t+pKDJAHOVXEc/LmqvVJQAEDkQOSwcpD0UzDIcqkoIqLtrj5X8U1ikvQnOVi+8AEmCbaAZkyhPWA0QTayq8KJUFyACrlQlWJtlE/DQobkGE5xScngmSUpKnMvi+laQBIkwJuc4CkP2Sdk5/DchhSuVHY0WtHGfLqFIVRv66spCdEpFwiiEIIlMSQJAm0mw8dFREWEaifEIO1rESrl8mTclMI0EDlfaQA5HoVQ2ZE2IHM2lNYCWutI63XRMiQdOI+IQGWEKzXQUDDDCmKTp5dfVJ0nR1KZopkY0MK8EwDkYcI0jf1ktTDWEAzum5i8AnXmsuiRJMATnFh1ZO03p0ax1rTtSXuzEAZC15jOeKa2+r9FI0znx48PJWNU6RGUzcfVEomHqVEo966pV3pQ1Z3jmIPgVhZMms5KVDx8tec2Raj0nUelYoOqUvtcviiOdfcPFAqVMuAj5/EpTFi4CNTru4c1XbQnHjdQDyynNawDDX36y1jip20qHq4dre0crzHwPgiYPtqpKDtrtpMmKWKoVJeqDInQEDxBPyKDMrI2pUEqNrK2QIHfP1VJQDRJSiYJu3dInkr/6c/8AqZ4pJMviWrM9SFREosLnBoiSYvldcyOtnSpBVQVepU2jMAcshwCZEpIsyJE5anNWcRJjLTkhyplPZJoICrE3MZTblohAq07k1i0GIIAJ1mOMZwrtbcAaxu16HmqVqgdswCNlsXM31I3A2XUovJi1ufHgihWgxPxPXKymbRyM9c/JDoVdkgwDByOR4KXFsnZmCSQDmAdEQBqZTdIpKm7q3QTNEpkA0KJTlNyzqb0zTenQDQY9XLkm2orudxj58EQ2WquS4BuSbk2aNBvJ3q73pZ9Th0LygwEVH6apWofPL4oj3pZ5zMxw3zn3fVKwgnuQHFWfNlWoIMTrmlCU2lei5sjaNpEyJnehVmERxEjruQ9pCw0NYuowuJYCG6A/HhyQtpDL+uuSiVrBQXaVi4TYwN+ekH5oErgjYKDF6qXIcriUbBRclVJVZUStYaJJS8opKBCSTLY0DUhVUyuY7Gi8qVQFEqCA3iJN+Nh5eaZE2iSV0qo10UvEEjcmsSi4KkFDlXZGpix8dAmQjRYFW2lVjyDIzBnvXSjYjQQPsRv+XRV28FNUjYpwW/xSAPaBtmdeCo18eCYVoPTvZMMKUYUZjkyFHWO/Xyj5phj0ixyMypaOIPx+pTIA816t6zr9Z5JVrlxemsUM+qgl6C+oqh1xJzE58/PglsIRzuuf9kCoVUuzsDxi45HMKtasSSTme5AJR5QnaqznITilCUcVRSSq7cG3EX3FKx0WEdHgqyoNQwBuy71aqW2icva3TfLuWsNESulUdzXEo2agm0oJVJUFy1m4hJXaTxQ9tdK1m4liUvtIpKBKWTK40Qr0h7Q5rlyijol0S8XPMqCFy5ERkk6q1MfP4LlyIrIRKgueZXLkwr7CYX8bf+Q+KqFC5EmyzVZcuTCMLTRmFcuToRhQiMdPcB15rlyIA7Vzly5MAXfqhE5LlyUKOlUcVy5AJQoTiuXIBQfCNHrGDQwSN9yEvjLPdFr6LlyD6Gj2LhWYPgfgVC5IUZxFu8fNVXLkTELly5EJJKhcuWAWA9oDiFHqxuUrkGPE/9k=);
+            background-repeat: no-repeat;
+            background-size: cover;       
+        }
+
+
+        .A {
+            display: table;
+            border: 3px solid;
+            background-color: deeppink;
+            margin-bottom: 30px;
+            text-align: justify;
+
+        }
+
+        .B {
+            display: inline-block;
+            border: 2px dotted;
+            background-color: silver;
+            text-align: justify;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="A">
+        <h1 align="center">This is introduction:</h1>
+        <p>In mathematics, a quadratic equation (from Latin quadratus 'square') is an equation that can be rearranged in
+            {\displaystyle ax^{2}+bx+c=0\,,}where the variable ⁠
+            x
+            {\displaystyle x}⁠ represents an unknown number, and a, b, and c represent known numbers, where a ≠ 0. (If a
+            = 0 and b ≠ 0 then the equation is linear, not quadratic.) The numbers a, b, and c are the coefficients of
+            the equation and may be distinguished by respectively calling them, the quadratic coefficient, the linear
+            coefficient and the constant coefficient or free term.[2]
+
+            The values of ⁠
+            x
+            {\displaystyle x}⁠ that satisfy the equation are called solutions of the equation, and roots or zeros of the
+            quadratic function on its left-hand side.</p>
+    </section>
+
+    <section class="B">
+        <h1 align="center">Usage:</h1>
+        <p>A quadratic equation whose coefficients are real numbers can have either zero, one, or two distinct
+            real-valued solutions, also called roots. When there is only one distinct root, it can be interpreted as two
+            roots with the same value, called a double root. When there are no real roots, the coefficients can be
+            considered as complex numbers with zero imaginary part, and the quadratic equation still has two
+            complex-valued roots, complex conjugates of each-other with a non-zero imaginary part.</p>
+    </section>
+
+</body>
+
+</html>
