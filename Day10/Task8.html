@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .All{
+            display: grid;
+            border: 5px solid;
+            grid-template-areas: 
+            "A  A  A  A"
+            "B  B  C  C"
+            "D  D  D  D" 
+            ;
+            grid-template-columns: auto auto auto;
+        }
+        .Am{
+            grid-area: A;
+            border: 5px double;
+            text-align: center;
+        }
+        .Bm{
+            grid-area: B;
+            text-align: center;
+
+        }
+        .Cm{
+            grid-area: C;
+        }
+        .Dm{
+            grid-area: D;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="All"><header class="Am">This is my Dashboard</header>
+
+        <main class="Bm">
+            <section>
+                <h1>Profile Deatils</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa autem officiis veniam harum delectus
+                    eum
+                    beatae? Laborum aliquid ratione magni tempore quam, fuga rerum nesciunt doloremque quis assumenda
+                    sed
+                    exercitationem esse totam, quibusdam optio, molestiae accusamus perferendis amet veritatis
+                    similique!
+                </p>
+            </section>
+            <aside class="Cm">
+                <h1>Contact</h1>
+                <p>Kishorre R P <br>PH No: 7358334990</p>
+            </aside>
+
+
+        </main>
+        <footer class="Dm">&copy; If you have any dobut call me!!</footer></div>
+        
+</body>
+
+</html>

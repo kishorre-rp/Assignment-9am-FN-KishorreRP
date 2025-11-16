@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A complex webpage</title>
+
+    <style>
+        .featured-projects {
+            padding: 20px;
+            background: #f0f0f0;
+        }
+
+        .featured-projects h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-image {
+            background: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAPEBAPEA8PDxAPDw8QDw8QDw8QEA8QFhEWFxUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OFw8PFy0dFR0rLSstLS4tLS0rLS4tLTAtLTctLS0tLy03MjUtLS8tKy8rKysrLS0yNystKy0rMy04Lv/AABEIALcBEwMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAAAQIEBgcDBQj/xABXEAABAwIDAwYHBw0NCQEAAAABAAIDBBEFEiEGMUEHEyJRcYEjMmFykaGxFDNCc3WytBYkUlVidIKDkrO1wcQVNTZDRFNjlKLCw9HSFyY0RVSTpeHwJf/EABgBAQEBAQEAAAAAAAAAAAAAAAABAgME/8QAJhEBAAMAAQMEAAcAAAAAAAAAAAECEQMEEiEiQVFxMTJhgZHh8P/aAAwDAQACEQMRAD8A3BCEIBCEIBCEIBCEIBCEIBCEIBCLoQIhKhAiEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCRKkQCEIQOQhCAQhCAQhCAQo9bXRQNzzSMib1vcG38g6z5Aqbi/KLE27aWMyn+ckBZGPKG+Me+yCx4/jsVHHLJITaGF0zw22bIA7d2ltu0hZtDyzNJ6VM9ov8GZj/AJzB7VKkxd1dhNTPUEEyGSN5AAGRlcWADqFgFn9ThNMW3jBcbjogsvbtc5o9fcqNNpOV6id44mj86JrvmPJ9S9WLlGw6Zrg2qjjJaQHP5yPKSLA9No7d6xaPAYnGxLmE7tHOG6+rgLNUJuEC9nOMIto+R8LWnyeNm/soNRwOkrAzwW0bppC95vz0NQwt4DJKHnr3H0L2hiGPQguvQ1jBxdBNA70xudw+5WOSbLTcHA+tScLGKUEgkppnsLTqzMXRPHU+PcR6xwIWt/Riaz7S1mLlAqm+/YW533VLVwyf2ZAwqZDylUX8dDX03XztHK8DvhzheDRYgMQgNVzQhkY4R1MY4S9Y6wQ5pB6jrqFxfGu9eKl42PDz35r0nJjV2ptu8KkIDcQpWuNujJIIXa8Msljde1T1sUovHLHIOtkjHj1FZNNTh3jNDvOAd7V5smA0pN/c0IP2TY2sd6W2Ks9L8SkdX81bkhYhDQc371PWw23czXVbAOwZyFPhq65lubxWubbdznuaf085GSfSsT012o6uktgQsvhxvFW2tiEMlv5+gjJd2mN7LdwU6LaTFgP+Vynytq4BbuMixPDePZ1jmpPu0JCpEW1eJDxsPo3jjzWIPBPYHwj1ldY9sasePg1QOoxVuHy39MjSsTS0ezcXrPuuSFUhtu4ePhOKjzI6WYf2Jin/AFdQDx6TFIz1Ow2pd8wEKZK7C1IVWPKBh48c1kfkfhuIj2RJ0XKBhbv5Vl+MgqYvnsCmLqzoVa/2gYRe37pUoPlkDfavYwrFqerYZKaeKojDiwvie17Q8AEtJHGxBt5QgmoQhAJEqECIQhA5CEIBI5wAJJAA1JJsB3rw9sMbNFT52AGSR4jjzC7WkgkuI42AOnWQsqxLF56g3mlkk8jj0R2NGg7grg0/FNtaKC4EhncPgwjMPy/F9ap2LcoFVJdsLWU7esWkk/KcLDuHeqiXJhKuJrpU1L5XF8j3yPO9z3Fx9JXMJqc1EezhbQcAnBAIL5gQRcH/APTcqX7ii4Rtb5oyfNsrphzrbPymxPhJdACT++juAVMFW3qkHnQTNHpLbKKaKRo8V0reyWQ/OJStEjfFqJR2827+6kfWRDfLG3yOe1vtTmytO5zT2OBVDm1VS3dM09sZHrDk8YrVD+bd19Jw9WUphCYUF/2CqHS0tW5zQ1xnYCAb36DNf/upeq+NeRydD61qvj2fMYrC5i9HDPh5eeNl5741wfEvSdGuTol3izzTV5xjTebU50aYY1uLOc1R2KTE5NyJzWqzJHhKjepLJT1qAw2XdjlzmHWtk5s56073QetQw9GdY7XWLJTqpw4n0qPLWP8Asj6SuTnrhI5Iqvcc6rd1n0r2+Td124ievEv2CkVZc5WPky8TEflI/QaRc+eMq7cU7K5oQheV3CEIQIhKhAqEIQUnlV/4en++D+bcszK0rlWPgKf48/m3LNCtQkkKaUpKaUQJzUy6cwoPbw794H/GS/pR6qStlFf6n3WtfnJLXvb99ZFTHGX7GI/jHt/uFRXYlcXxNO9rT2tBSB8nGNvY2Un2tCaZnfzT+50R9rgqE9yxjdGwdjQPYmmBv3Y7JJB7CnGY8Y5B3NPsJTXTgcJP+1IfYEGhcmbLUtSLk/XLd5JPvbOJVqLFV+S9wdTVNr/8UBq1zT71HwIureWrpxz4ceSPKI6NcnMU0sTHMXaJcZqgujTCxTSxczGtRZiaohYkyKUWJuRa1ntcMqLLtkSFqus9rldKXJxaubmoEc5cJCnuXF5Wog7nNxVm5Mfe8Q+Uj9BpFV3FWjkw97xD5SP0GkXDqPyx9vR087b9l0QhC8b2BCEIBCEIFQhCCi8qx8DTfHP+Ys1JWkcrB8FS/GyfMCzYrUJJCU0pSUwlEF09hXMJ7EHu0X8Hz8bJ+lJVUVbaP+D/AONl/SkiqJSFIU0pSkQImpSU0oNE5MB9b1H30PzMauRaqdyWj63qPvv/AAI1di1bqxaPLgWrmWqUWphat654iuYmFilFqaWK6zNUQxpuRSixNLVrWZqiliQsUgsSFqus4iuYubmqW5i5uYtazNUJ7FHkYvQcxcHsW4sxNXmuarRyX+94h8pH6DSLwXxqwcmYszEflL9hpFy6ifTH269NHrn6XJCELxvcEIQgEIQgVCEIKDytHwdL8ZL81qzYlaNytno0nnzfNYs3JWoQEppKQlNJRC3T2LldPaUHvUp/3f8Ax0v6TkVSKt0Gmz9v6Z/rxGQqoJCkK6RU8jw5zI5HtZ47msc4N0vqQNNExj8pDrNdYg2cLtPkI4he7hG0McTXNfEWnnDI3mA1rHXDRlILhlIynXXTyoK8Ui7VE+fL4ONmUW6DSC7dq651Onk3lRyUGk8lQ+t5/vs/mI1ebKj8k/vE/wB9n6PEr5ZWGZci1NLV3ISZVrWcRy1NLVILU3KrqYjFqaWqSWpharqYjlqaWqQWpC1XWcRS1Mc1SixMLVrU7UNzFxexTnNXJzFqJYmqA6NexyciwxH5S/YKRQXRr0OT4W/dL5SH0CjWOafS6cMZZbUIQvM9IQhCAQhCBUIQgzzlePRpPOn9jFmxK0flgPRo/On9kazQuWoQ4uTCUhKaSiHXXRjlwzJ7Sgso0wH8b+2uKp5KuEmmBD4xv0olU26QoJTboKQoEJTUpKaUGm8knvE/3276PEtAss/5IfeJvvp/0eJaHlQMypLLpZJZVMciEhaupaksqmOJamlq7EJLIjgWppau5akLVdTEctTS1SC1NLVdTEUsXNzFLLUwtWtZmENzFK2CGuJ/KQ/R9GmuYumw46WJ/KQ/R9Gs8k+GuOPK0IQhcXYIQhAIQhAqEiEGccsh6NH51R7I1mRctI5aHWFF21P+EswzrUI6lyQuXLOkLkR1untKj5k9jkFuqtMEb8ZH+eJVPZC52jWlx32Ft3eQrLtNKY9nw5ujmvpnDt54FVKkrg4DNG8O00YM4cbE2bxJsCctrj1pCzuePxSBA++XIQ77EuiaT3l2X1pron3tk6WhA52nIP4QeWjdxIQ7EYhc5ZCA0OJAYRlIuHXzeLwzbr6XTzUjUczKCL3Dgxpa4NDspudDY37FfDOW+Y/j+/8AfLmIHXAIDSeuSFwHaWuIHeUyeItNrtOl+i9rx6k98xvbmneNl363yZ91r3tw38bW1Xk4ribogPBi7mhwu8OABGm4a+lNgiLb5lqXJpJUCkqDSxRzziqOSOSXmmO8DFmu+xtYEndwVuZJjx/kOGM86unPzY1VOQKQupiXG5fU1DiTx8GxbAs62osse0Z8SDA2+dNXP9gCfHSbRHxjgTeyPEXf4iu6FNFJOH7QH+OwUdkFafa9QsXjxymi519VhZvJFGGtpKje+QNvcycASe5aGqfykSOMUELCA97pni5sLNhdHfudMw9yoz1+2mL2J56iA6xSPPtertQYPjc0UUpxOkiMkbHln7mhxZmaDlJMm8Xss/gwN7ntie6ENLmBx51gIa42Ot+rqW+AJqYpI2axk78agHm4TB+t6d9S2Lfb1vdhNJ/qV0QmyZCknZPFft9/4qj/AM0n1I4p9vnd2F0Y/WruhNkyFI+o7EuOPS92HUI/Uj6jMQ+3s/8AUKEf3Vd0JsmQpH1F1/29qP6jQ/6V7uy2BOoWTNfUvqpJ6gzyTPjjjJPMxRgZWaWDYmr2kJpkBCEKKEIQgEIQgEISIKnyi7LPxKBnMuDZ4Hl0YcbNka4AOZfgdGkHyW43GJ4vgeI0hPPUFWGje9sJlj73x3A7yvo3E3uDDlNjZZvjeGyTE3cSesPcCrAx6PGIz8IexSGVrTxXuY1sM6Ql2aS/WSH+3VVOr2RqofF1He0qo9Vs4PFd45FUpG1UXjMfp1tuPSE+DGXN3j0FNMaftg7/AHfaOv3P89v+aq1HVMcGeK4EMadBqA2S4IOlrnc7QcHOOi9rZPG6avo5MLqpMgkuI3kguF352kXtctcR0eIaBxNvLdyU4kHODJKV8Y8WXnwA4eaRmHZZZUx9U3xi/fkdq518zYLB3SLXZr6XLmv+7A6J6PxOMaB7BbMBZ7QNYQNLNtlv1Ntf+LcemuzOSbEPh1dFHf8AppD7GLp/sty+/YxSMtvtncPW4IPOmxGN19W69emnNZbG1+PA3HfoPB2lrGSOAa7NZrG5je7sosTrrr5Va28nuHA+Ex2Bx+xjjaXHs8Ivbwrkuw97gWy4hUgEdFtOY2P8hksAB5bjtQWDkGpXtpYnkWa99U9vlbdrL+kFa4vIwPDWUsYGVkQDWsaxpAZFGNzb8TxJ61Jmxmlj0fVU7D1OniafWUHk7XbaUuFmFk+Zz6guyMYW3sLXJuesgd6BtM57c0cBd1ZnNaN19STp6E3E9pcMe3LJX0+U36LZwb623N3qvyYxs81xLpIpXNuSOaqJstt9xlNiqif9VlU9xa1tPGRvzO5z0WLV5WPvfUOjNQZ3OEcrG+56Z7m5HlheDZrgLljeI3KcOUfCIwMhkLbkDm6ZzW6b99rcN9t6h1vKnRG7W0tc46W8HA0ON7Waec119hVHiUuDw36NLiJueMYaPQ4j2K7CGveA4VMzbgHK4NBHb0FTjymxNIcyjkcLi5fUMjDe2zXHge5Pl5XJtzaCJp3jPUOd0dCDo0AnXdcd6YLcKLEP+qk9P/oLsyiruNQ8/hOWezcrFeT0YaJgJIaS2Ynfa7gXjL6+9RX8qGJOBOenaQb+DiZa1vuib+kKYNONLXcJ3flOTDT4jwnHeXf6VlM/KFirictSWAgnRkAsPuSY9D5115M22OISdF2JVgu/e2YNGXqL2BvqA7VRuuFxV4kaZZmvZxb0tRx+Bv71YV86Ha6seS33USG6B0kUUrpDoTqczRv6ye1LTbV4nA8E1FSwkAiPIyNhFgb80Y8p0vcgDtCmD6KXlbQ7R0mHxiSqmEYNwxli6SQjgxg1PDXcL6rMsI5V6ppDaiCnn4F0cgp3jfcnMSy+nWF5e0lJSYvVPrP3SkpDI2NjYqujeY2hgALY52vy5b3NiN7ieKYqxSctUGctZRzhgNg+R0dz2ta429a93CuUmlmbmI6PFzCSW9rHAELMKPk0qy4mJ1JWxfBdT1DSAeGYSW8uiWLYDE2PJFHNY2HQkpW38p8Ir4RvtDXRTsEkTw9ptqP1jgpCpmxNDUwPyupJaeGz9XywPGuoFmvcTqN/armsyoQhCBUIQgj1TbghV+oo9VZJQoE0aCvvoAo8mFtPBWEwphhVRU6jZ2F/jMafwQvJq9gaOTxoR2i4K0DmUgp0GZjklon62lYPJIT7V6cPJ9SMbl56tcOr3XM1voBV/MXRUQwoqmt2Aw4eNA6T42aaT5zlJi2Ow5u6gpj50TXe1WjmUcwiPJpcMp4ve6eCO32MTG+wL0IqpzSANB5F25hI2l1QelU0wqYTG82vlINgSCDcHVZvj2x0An5gQyF7mmTnKemm5s5jrndkMWc6nffXfqtPpo7NC8DbDZ11WG83PNCRockjgCPKNyKySv2Vlj0aOcbrmcxgc4dsJ1H4JPYvGkjkuDdryw6kEGTS+rs19b9Y8llr1HstVRwsj59srmaB0jTmtwGbeoWJbLVMoGelZI4G2drwCW9Wa4cB5L2V1GThxuRqb2zWAJ0vYHQ6a30sm3sN5Bbo3peTTf0gNeAA6itSi2FlP8igHxr2yfOLipUWxNSz3uOghv8AYtt6mMCaMihdnJDbu4WbbMD2g3spLMNndYNp5T1EQyAHyGzbHtuteh2PrD49ZC0dUcErj3F0lvUvSh2Lj+HUTvPGwjYPYmjFm4HVn+INjwc5rQNb6Bzge9dmbM1Z3iNpG7PK12hFvg5r9626PZKkG9sj/Olf+qylR7P0bd1NGfOBf7boMMbstKdHz0zPIwvkueuzmNAPYpUWyWY3dVOk6OXoU73G3kJkdbuAW6RUMLPFhib2RsH6l3t1adiDBqbZene7I1uIyuv8GkkDfy3RED8pWCl2Gc+wNHU24GacMA7muB4nSy1kNS5UGf03J/a3gqdo6nvllA69HXAUmPYeRh8GKGP7ptMA+/a0D2q8hq6NCivGwTBzT3zOD3G2oBAG/cCTbevZITrJbKBrU5FkqBEIQgchCEDXBR5GKSVzIQRSxNMalZUZUETm0CNS8iMiCM5mi4mJTyxM5tBC5pKIlM5tHNoInMpWwqYGIDUBG3RD2p4CLIOYaghdLIyqo52S5V0yoyoOeVGVdcqMqDllS5V1sjKg5ZUZV1ypbIrllS5V0shQMDU6ychAiEqECJUIQIhKhAIQhAJqRCAS2QhAWRZCEAQkskQgWyLIQgLIshCBQlshCBLJbIQgEIQgVCEICyEIQCEIQCEIQKhCECIQhAIQhAIQhB//2Q==) center/cover no-repeat;
+            height: 300px;
+        }
+
+
+        .project-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-evenly;
+        }
+
+        .project-info h3 {
+            margin: 10px;
+            font-size: 25px;
+            color: #333;
+        }
+
+        .project-info p {
+            flex-grow: 1;
+            margin: 0 0 1rem;
+            color: #666;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .buttons button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background-color: darkcyan;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .buttons button:hover {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="featured-projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image"></div>
+                <div class="project-info">
+                    <h3>Project One</h3>
+                    <p>A brief description of project one.</p>
+                    <div class="buttons">
+                        <button>View</button>
+                        <button>Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image"></div>
+                <div class="project-info">
+                    <h3>Project Two</h3>
+                    <p>A brief description of project two.</p>
+                    <div class="buttons">
+                        <button>View</button>
+                        <button>Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image"></div>
+                <div class="project-info">
+                    <h3>Project Three</h3>
+                    <p>A brief description of project three.</p>
+                    <div class="buttons">
+                        <button>View</button>
+                        <button>Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

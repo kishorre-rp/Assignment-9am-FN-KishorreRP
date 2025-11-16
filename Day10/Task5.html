@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kishorre Football site</title>
+
+    <Style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr ;
+            grid-template-rows: 100px 1fr 50px;
+            grid-template-areas:
+                "header header"
+                "main-left main-right"
+                "footer footer";
+            height: 700px;
+            gap: 10px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .header {
+            grid-area: header;
+            background-color: #1e40af;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .main-left {
+            grid-area: main-left;
+            background-color: lightblue;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 30px;
+            
+        }
+
+        .main-right {
+            grid-area: main-right;
+            background-color: whitesmoke;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 30px;
+        }
+
+        .footer {
+            grid-area: footer;
+            background-color: darkslateblue;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 30px;
+        }
+    </Style>
+</head>
+
+<body>
+
+    <div class="grid-container">
+        <header class="header">
+            <h1>Football Highlights</h1>
+            <p>Latest football news and updates</p>
+        </header>
+
+        <main class="main-left">
+            <h2>News</h2>
+            <p>Exciting match results and player updates...</p>
+        </main>
+
+        <aside class="main-right">
+            <h2>Upcoming Matches</h2>
+            <ul>
+                <li>Team A vs Team B</li>
+                <li>Team C vs Team D</li>
+            </ul>
+        </aside>
+
+        <footer class="footer">
+            &copy; 2025 Football Fan Site
+        </footer>
+    </div>
+
+</body>
+
+</html>
