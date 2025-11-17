@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Basic Website</title>
+    <style>
+        .layout {
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "sidebar content"
+                "footer footer";
+            grid-template-columns: 220px 1fr;
+            grid-template-rows: 70px 1fr 60px;
+            height: 1000px;
+            gap: 10px;
+        }
+
+        header {
+            grid-area: header;
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+        }
+
+        aside {
+            grid-area: sidebar;
+            background: #32475b;
+            color: #fff;
+            font-size: 30px;
+        }
+
+        main {
+            grid-area: content;
+            background: grey;
+            color: #222;
+        }
+
+        footer {
+            grid-area: footer;
+            background: olive;
+            color: #fff;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        @media(max-width: 700px) {
+            .layout {
+                grid-template-areas:
+                    "header"
+                    "sidebar"
+                    "content"
+                    "footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: 70px 60px 1fr 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <header>
+            <h1>Header</h1>
+        </header>
+        <aside>Sidebar
+            <li>1.good</li>
+            <li>2.Bad</li>
+        </aside>
+        <main>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti laboriosam saepe est tempora aliquid
+                voluptatibus reprehenderit aut at ratione vel fugiat ex pariatur in sit adipisci quisquam laudantium
+                quia, quibusdam dolore? Qui temporibus voluptates saepe nihil hic. Similique fugiat commodi quae ad
+                ducimus incidunt ullam quod modi quidem quibusdam? Molestias, ipsum sequi rerum eligendi itaque
+                corrupti, alias assumenda earum facere sed dignissimos, est fuga esse corporis eaque dolores nisi id?
+                Error in praesentium officiis aliquam doloremque unde reprehenderit neque voluptate fugit odit. Soluta
+                quibusdam porro enim suscipit? Atque voluptatum corrupti perspiciatis quibusdam repudiandae, cupiditate
+                mollitia ab maiores reiciendis impedit illo dolore esse iste quia suscipit eligendi voluptate incidunt
+                in, nostrum facere porro! At pariatur corporis, amet laboriosam ea earum expedita saepe culpa,
+                perspiciatis excepturi nisi unde facere nobis, odit deleniti velit quos tempora maxime inventore in
+                voluptatibus repellendus rem. Dignissimos voluptatum nisi nam dolores exercitationem quaerat
+                necessitatibus quam optio velit similique culpa animi accusantium, adipisci iusto vel dolorum, possimus
+                eligendi in commodi dolor! Fuga suscipit eveniet, iure nihil nulla veniam voluptatum repellendus sed ab
+                aliquam illo commodi quaerat facere minima, sunt reprehenderit reiciendis dolorum deserunt porro natus
+                laudantium accusamus perspiciatis recusandae? In nemo facilis est, eius, quidem maiores quisquam
+                voluptas sapiente quaerat at odio quibusdam ipsam nobis porro, expedita officiis fugit minima molestiae
+                aperiam vero? Ea, veniam quia omnis nobis facilis esse aliquam voluptatem beatae? Quibusdam aliquam
+                repellendus illo impedit eos, voluptatem doloremque voluptatibus dolor? Corporis iusto distinctio
+                inventore aliquam hic ducimus nam quam perspiciatis, sed suscipit facilis asperiores consequatur rem
+                excepturi quis at! Similique cupiditate repellendus fugit optio in dolore modi repudiandae quia, soluta
+                saepe explicabo architecto sint, sit ab quos. Unde ullam sint consectetur fuga magnam assumenda quis ad
+                culpa cum debitis facere minus voluptas officiis nesciunt, nam mollitia obcaecati quam odio eligendi
+                incidunt est, quae vero. Facilis reprehenderit dolor explicabo distinctio assumenda, repellendus maxime
+                magnam, dicta impedit, dolorum voluptates nesciunt nihil! Ratione repudiandae ut id dolor perferendis
+                porro, nihil quam voluptatum harum impedit quibusdam quod optio ex praesentium laboriosam dolorem
+                voluptate laudantium quasi animi soluta itaque similique. Odit suscipit optio in excepturi, culpa atque
+                magni eligendi deleniti repudiandae nulla quod nesciunt error perferendis similique ea accusamus
+                reiciendis odio velit est iusto vitae consequuntur soluta voluptas veritatis! Accusamus fugit obcaecati
+                minus sit harum nihil optio? Vitae, veniam, qui ex accusantium aspernatur delectus numquam cum optio,
+                accusamus repellendus explicabo rerum. Est dolor vel illum sapiente earum esse nam obcaecati nemo
+                voluptatibus officia eos laboriosam, minus similique deserunt voluptate alias minima, labore, voluptas
+                saepe magnam rem laborum quibusdam. In voluptatem harum cum accusantium. Magnam tempore quo culpa odio
+                optio et necessitatibus quasi consequatur non facere eligendi fugit cumque nulla, perspiciatis quod iste
+                doloremque corrupti nihil. Similique suscipit soluta tempore omnis reprehenderit fugit tenetur? Ducimus
+                modi molestias esse vitae aperiam totam ea minus deleniti quisquam porro reiciendis sit ipsum cupiditate
+                voluptatum, libero corrupti blanditiis fuga quaerat illum voluptate laudantium at culpa. Ipsa ab
+                mollitia voluptates enim laborum fuga aut! Suscipit eaque perspiciatis quas. Animi molestiae minima
+                obcaecati, laborum nulla quasi ducimus.</p>
+        </main>
+        <footer>&copy; This is my website</footer>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio Grid Layout</title>
+
+
+    <!-- Progressive Task-1, Task-2, Task-3, Task-4, Task-5 -->
+
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f6f8fa;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "gallery gallery"
+                "testimonials testimonials"
+                "footer footer";
+            grid-template-columns: 250px 1fr;
+            grid-template-rows: 90px auto auto auto 70px;
+            min-height: 100vh;
+            gap: 14px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 14px;
+        }
+
+        header {
+            grid-area: header;
+            background: gray;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 25px;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(50, 75, 125, 0.09);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: whitesmoke;
+            text-decoration: none;
+            font-size: 30px;
+            transition: color 0.8s;
+        }
+
+        nav a:hover {
+            color: #66aaff;
+        }
+
+        aside {
+            grid-area: sidebar;
+            background: #fff;
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 2px 12px #073673aa;
+            font-size: 15px;
+            min-width: 0;
+        }
+
+        main {
+            grid-area: main;
+            background: #fff;
+            border-radius: 10px;
+            padding: 2.6rem 2.1rem 2.3rem 2.1rem;
+            box-shadow: 0 2px 16px #03284840;
+            min-width: 0;
+        }
+
+        main h1 {
+            font-size: 2.3rem;
+            color: #274472;
+        }
+
+        main p {
+            font-size: 1.15rem;
+            color: #333;
+        }
+
+        /* Gallery with auto-fit grid */
+        .gallery {
+            grid-area: gallery;
+            background: oldlace;
+            border-radius: 10px;
+            padding: 2rem 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.3rem;
+            box-shadow: 0 1px 10px #19589c88;
+        }
+
+        .gallery img {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 2px 7px #1d5ed720;
+            transition: transform 0.25s;
+            aspect-ratio: 1/1;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.08) rotate(+3deg);
+        }
+
+        /* Testimonials with auto-fit columns */
+        .testimonials {
+            grid-area: testimonials;
+            background: #dee4fc;
+            border-radius: 10px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            align-items: stretch;
+            box-shadow: 0 1px 10px #03279177;
+        }
+
+        .testimonial {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px #90caf970;
+            font-size: 1rem;
+            color: #2A3855;
+            display: flex;
+            flex-direction: column;
+            gap: .7rem;
+        }
+
+        .testimonial cite {
+            margin-top: .6rem;
+            font-style: normal;
+            font-size: 15px;
+            color: #384b70;
+            font-weight: 600;
+            text-align: right;
+            letter-spacing: .04em;
+        }
+
+        footer {
+            grid-area: footer;
+            background: #324b7d;
+            color: #fff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            letter-spacing: .02em;
+            box-shadow: 0 0.5px 5px #00439630;
+        }
+
+        /** Responsive design with media queries */
+        @media (max-width: 900px) {
+            .portfolio-grid {
+                grid-template-areas:
+                    "header"
+                    "main"
+                    "sidebar"
+                    "gallery"
+                    "testimonials"
+                    "footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: 80px auto auto auto auto 60px;
+                padding: 7px;
+                gap: 8px;
+            }
+
+            aside,
+            main,
+            .gallery,
+            .testimonials,
+            footer,
+            header {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                padding: 1rem .3rem;
+            }
+
+            .testimonials {
+                grid-template-columns: 1fr;
+                padding: 1.2rem .5rem;
+            }
+
+            aside,
+            main {
+                padding: 1rem .5rem;
+            }
+
+            nav {
+                gap: 1.1rem;
+                font-size: .97rem;
+            }
+
+
+        }
+
+        main:hover {
+            background-color: gold;
+        }
+
+        header:hover {
+            background-color: orange;
+        }
+
+        aside:hover {
+            background-color: yellowgreen;
+        }
+        footer:hover{
+            background-color: lightsalmon;
+        }
+        section:hover{
+            background-color: lime;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="portfolio-grid">
+        <header>
+            <span>My Portfolio</span>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Gallery</a>
+                <a href="#">Testimonials</a>
+            </nav>
+        </header>
+
+        <aside>
+            <h2>Profile</h2>
+            <p>
+                Hi, I'm Kishorre R P—a passionate web developer skilled in creating visually striking,
+            </p>
+            <ul>
+                <li>Email: Kishorrerp21@gmail.com</li>
+                <li>Location: Chennai, India</li>
+            </ul>
+        </aside>
+
+        <main>
+            <h1>Welcome to My Space</h1>
+            <p>
+                Crafting modern, responsive layouts with CSS Grid gives you ultimate section control and endless
+                flexibility.
+                Explore the gallery, read what others say, Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Esse, asperiores.
+            </p>
+        </main>
+
+        <section class="gallery">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80"
+                alt="Project 1" />
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80"
+                alt="Project 2" />
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80"
+                alt="Project 3" />
+            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+                alt="Project 4" />
+        </section>
+
+        <section class="testimonials">
+            <div class="testimonial">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae nesciunt cumque repellat eveniet
+                    molestias, error distinctio magnam consequuntur quam atque.</p>
+
+            </div>
+            <div class="testimonial">
+                <p>"Impressive projects—clean, accessible, and beautiful on all screens."</p>
+
+            </div>
+            <div class="testimonial">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum, officia excepturi! Suscipit iure ipsum necessitatibus!</p>
+
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2025 Kishorre Portfolio. All rights reserved.
+        </footer>
+    </div>
+</body>
+
+</html>

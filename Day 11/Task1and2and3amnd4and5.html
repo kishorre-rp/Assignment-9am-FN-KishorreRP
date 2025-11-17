@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eiffle Tower</title>
+
+
+           
+                                          <!-- Task-1, Task-2, Task-3, Task4, Task-5 -->
+    <style>
+        *{
+            margin: 1px;
+        }
+        body{
+            background-image: url(https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwG2MiNcvkzuuvFZxm4U6vA95elkVfLmdm22wK3ZLwFzyW-AsKjHq71TqNVnu63BTUHwzy0SNk0yKLosT4IJLYCaS0T6irkUAqepUiCLe2uWyXciyULSRE0AJzBZ-tSwiRVo0R2Rg=w270-h312-n-k-no);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    
+        .Container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:
+                "A  A  A"
+                "B  B  B"
+                "C  C  C";
+            gap: 30px;
+
+        }
+
+        .A {
+            grid-area: A;
+            border: 2px solid;
+            text-align: center;
+            background-color: burlywood;
+            padding: 30px;
+
+        }
+
+        .B {
+            grid-area: B;
+            border: 2px solid;
+            text-align: justify;
+            background-color: burlywood;
+
+        }
+
+        .C {
+            grid-area: C;
+            border: 2px solid;
+            text-align: center;
+            background-color: burlywood;
+        }
+
+        .Container:hover{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Container">
+        <header class="A">
+            <h1>About Eiffle Tower</h1>
+        </header>
+        <main class="B">
+            <p>The Eiffel Tower; French: Tour Eiffel [tuʁ ɛfɛl] is a wrought-iron lattice tower on
+                the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company
+                designed
+                and built the tower from 1887 to 1889.
+
+                Locally nicknamed "La dame de fer" (French for "Iron Lady"), it was constructed as the centrepiece of
+                the
+                1889 World's Fair, and to crown the centennial anniversary of the French Revolution. Although initially
+                criticised by some of France's leading artists and intellectuals for its design, it has since become a
+                global cultural icon of France and one of the most recognisable structures in the world.[5] The tower
+                received 5,889,000 visitors in 2022.[6] The Eiffel Tower is the most visited monument with an entrance
+                fee
+                in the world:[7] 6.91 million people ascended it in 2015. It was designated a monument historique in
+                1964,
+                and was named part of a UNESCO World Heritage Site ("Paris, Banks of the Seine") in 1991</p>
+        </main>
+        <footer class="C">&copy; This is official My Statement!!</footer>
+    </div>
+</body>
+
+</html>
