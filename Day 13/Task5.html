@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Button</title>
+    <style>
+        body{
+            background: violet;
+        }
+        .A {
+            margin-left: 600px;
+            margin-top: 300px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 2s ease, transform 2s ease, box-shadow 2s ease;
+            outline: none;
+        }
+
+        .A:hover {
+            background-color: darkblue;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .A:focus {
+            background-color: greenyellow;
+            box-shadow: 0 10px 3px rgba(4, 66, 117, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <button class="A">Click Me!</button>
+</body>
+
+</html>

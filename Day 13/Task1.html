@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color Changing box</title>
+    <style>
+        body{
+            background: gold;
+        }
+        .box {
+            border: 3px solid;
+            background: green;
+            width: 300px;
+            height: 300px;
+            margin-left: 600px;
+            margin-top: 50px;
+            transition: background 1.5s, transform 3s;
+            border-radius: 30px;
+        }
+
+        .box:hover {
+            background: red;
+            transform: scale(1.0);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center">Color Changing Box</h1>
+    <div class="box"></div>
+</body>
+
+</html>

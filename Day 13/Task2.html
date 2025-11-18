@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text animation</title>
+    <style>
+        body{
+             background: gray;
+        }
+        *{
+            margin: 10px;
+        }
+
+        .Text{
+            color: aquamarine;
+            position: relative;
+            background: orange;
+            border: 3px solid red;
+            border-radius: 20px;
+            box-sizing: border-box;
+            width: 300px;
+            animation: moveRight 10s  linear infinite;
+            box-shadow: 0 2px 10px black;
+            
+        }
+        @keyframes moveRight{
+            0%{
+                left: 0;
+            }
+            100%{
+                left: 100%;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Text">
+        <p>Stranger Things is an American television series created by the Duffer Brothers for Netflix. Produced by
+            Monkey Massacre Productions and 21 Laps Entertainment, the first season was released on Netflix on July 15,
+            2016. The second and third seasons followed in October 2017 and July 2019, respectively, and the fourth
+            season was released in two parts in May and July 2022.</p>
+    </div>
+
+</body>
+
+</html>
