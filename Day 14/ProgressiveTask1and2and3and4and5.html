@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kishorre Oda Dashboard</title>
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-serif bg-gray-50">
+
+
+    <div id="loader-overlay">
+        <div class="loader"></div>
+    </div>
+
+
+    <div class="dashboard">
+
+
+        <header class="bg-gradient-to-r from-violet-900 to-yellow-600 text-white text-3xl font-bold flex items-center justify-center shadow-lg">
+            Kishorre Oda Dashboard
+        </header>
+
+
+        <aside class="bg-gradient-to-r from-green-800 to-indigo-500 text-white p-8 space-y-6 md:space-y-10">
+            <h2 class="text-3xl font-bold mb-8">Menu</h2>
+            <ul class="space-y-4 text-xl">
+                <li class="hover:bg-gradient-to-r from-red-600 to-green-600 p-4 rounded-lg transition transform hover:scale-105 cursor-pointer">
+                    Dashboard</li>
+                <li class="hover:bg-gradient-to-r from-red-600 to-green-600 p-4 rounded-lg transition transform hover:scale-105 cursor-pointer">
+                    Analytics</li>
+                <li class="hover:bg-gradient-to-r from-red-600 to-green-600 p-4 rounded-lg transition transform hover:scale-105 cursor-pointer">Reports
+                </li>
+                <li class="hover:bg-gradient-to-r from-red-600 to-green-600 p-4 rounded-lg transition transform hover:scale-105 cursor-pointer">
+                    Settings</li>
+                <li class="hover:bg-gradient-to-r from-red-600 to-green-600 p-4 rounded-lg transition transform hover:scale-105 cursor-pointer">Profile
+                </li>
+            </ul>
+        </aside>
+
+
+        <main class="p-8 bg-gradient-to-r from-blue-500 to-red-500 text-white rounded-xl shadow-xl">
+            <div class="bg-white/20 backdrop-blur-md rounded-xl p-8 border border-white/30">
+                <h1 class="text-4xl font-bold mb-6">Main Content Area</h1>
+                <p class="text-lg mb-6">Welcome to your responsive dashboard built with Tailwind CSS!</p>
+                <img src="data:image/jpeg;base64,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"
+                    alt="Dashboard Image"
+                    class="rounded-lg shadow-2xl hover:scale-110 transition duration-500 max-w-full h-auto" />
+            </div>
+        </main>
+
+
+        <section class="p-8 bg-blue-200 rounded-xl shadow-xl mx-4 md:mx-0">
+            <div class="bg--graient-to-r from-blue-500 to-green-600 backdrop-blur-md rounded-xl p-8 border border-white/40 text-center">
+                <h2 class="text-4xl font-bold text-blue-900 mb-6">Stats Overview</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-white">
+                    <div class="bg-gradient-to-r from-blue-700 to-green-400 p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
+                        <h3 class="text-2xl font-bold">12,450</h3>
+                        <p>Active Users</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-green-600 to-orange-700 p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
+                        <h3 class="text-2xl font-bold">₹ 89,200</h3>
+                        <p>Revenue</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-red-600 to-blue-600 p-6 rounded-lg shadow-lg transform hover:scale-105 ">
+                        <h3 class="text-2xl font-bold">98.7%</h3>
+                        <p>Uptime</p>
+                    </div>
+                </div>
+                <img src="data:image/png;base64,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"
+                    alt="Stats Chart"
+                    class="mx-auto mt-8 rounded-lg shadow-2xl hover:scale-105 transition duration-500" />
+            </div>
+        </section>
+
+
+        <footer
+            class="bg-gradient-to-r from-orange-500 to-lime-600 text-white text-2xl font-bold text-center py-4 shadow-lg hover:from-green-600 hover:to-lime-700 transition cursor-pointer">
+            © 2025 Kishorre Oda Dashboard. All rights reserved.
+        </footer>
+    </div>
+</body>
+
+</html>
