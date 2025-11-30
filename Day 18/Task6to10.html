@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Pages</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: white;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
+    }
+    .panel {
+      background: rgba(255,255,255,0.15);
+      padding: 25px;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    h2 {
+      margin-top: 0;
+      color: #fff;
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      padding-bottom: 10px;
+    }
+    button {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 5px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,107,107,0.4); }
+    .display {
+      background: rgba(0,0,0,0.3);
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      font-family: 'Courier New', monospace;
+      min-height: 60px;
+      word-break: break-all;
+    }
+    .input-group {
+      margin: 10px 0;
+    }
+    input { 
+      width: 100%; padding: 8px; border-radius: 6px; border: none; 
+      background: rgba(255,255,255,0.9); 
+    }
+    .calc-display { font-size: 24px; font-weight: bold; text-align: right; }
+    .counter-list { max-height: 200px; overflow-y: auto; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- TASK 6: User Profile -->
+    <div class="panel">
+      <h2> User Profile </h2>
+      <div id="profileDisplay" class="display">
+        { name: "Kishorre R P", email: "Kishorrerp21@gmail.com", role: "Developer" }
+      </div>
+      <div class="input-group">
+        <input id="nameInput" placeholder="New name" />
+        <button onclick="updateProfileName()">Update Name</button>
+      </div>
+      <div class="input-group">
+        <input id="roleInput" placeholder="New role" />
+        <button onclick="updateProfileRole()">Update Role</button>
+      </div>
+    </div>
+
+    <!-- TASK 7: Calculator -->
+    <div class="panel">
+      <h2> Calculator (let variables)</h2>
+      <div class="calc-display" id="calcDisplay">0</div>
+      <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: 10px;">
+        <button onclick="calculator('7')">7</button>
+        <button onclick="calculator('8')">8</button>
+        <button onclick="calculator('9')">9</button>
+        <button onclick="calculator('/')">/</button>
+        <button onclick="calculator('4')">4</button>
+        <button onclick="calculator('5')">5</button>
+        <button onclick="calculator('6')">6</button>
+        <button onclick="calculator('*')">*</button>
+        <button onclick="calculator('1')">1</button>
+        <button onclick="calculator('2')">2</button>
+        <button onclick="calculator('3')">3</button>
+        <button onclick="calculator('-')">-</button>
+        <button onclick="calculator('0')">0</button>
+        <button onclick="calculator('.')">.</button>
+        <button onclick="calculator('=')">=</button>
+        <button onclick="calculator('+')">+</button>
+      </div>
+      <button onclick="clearCalc()" style="background: #666; width: 100%;">Clear</button>
+      <div id="calcLog" class="display" style="font-size: 12px;">Intermediate values logged here...</div>
+    </div>
+
+    <!-- TASK 8: Loop Counter -->
+    <div class="panel">
+      <h2> Loop Counter (let)</h2>
+      <button onclick="runLoop()">Run Loop (1-10)</button>
+      <div id="loopDisplay" class="display counter-list"></div>
+    </div>
+
+    <!-- TASK 9: Shopping Cart -->
+    <div class="panel">
+      <h2> Shopping Cart </h2>
+      <div id="cartDisplay" class="display">
+        { name: "JavaScript Course", price:₹ 199, quantity: 1 }
+      </div>
+      <button onclick="addToCart()">+1 Item</button>
+      <button onclick="removeFromCart()">-1 Item</button>
+      <div>Total: $<span id="cartTotal">99</span></div>
+    </div>
+
+    <!-- TASK 10: Settings Panel -->
+    <div class="panel">
+      <h2 Settings Panel</h2>
+      <div id="settingsDisplay" class="display">
+        { theme: "dark", notifications: true, language: "English" }
+      </div>
+      <div class="input-group">
+        <select id="themeSelect">
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+          <option value="auto">Auto</option>
+        </select>
+        <button onclick="updateTheme()">Update Theme</button>
+      </div>
+      <div class="input-group">
+        <label><input type="checkbox" id="notificationsToggle" checked> Notifications</label>
+        <button onclick="updateNotifications()">Update Notifications</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // TASK 6: User Profile 
+    const userProfile = {
+      name: "John Doe",
+      email: "john@email.com",
+      role: "Developer"
+    };
+
+    function updateProfileName() {
+      userProfile.name = document.getElementById('nameInput').value || "Anonymous User";
+      updateProfileDisplay();
+    }
+
+    function updateProfileRole() {
+      userProfile.role = document.getElementById('roleInput').value || "User";
+      updateProfileDisplay();
+    }
+
+    function updateProfileDisplay() {
+      document.getElementById('profileDisplay').textContent = JSON.stringify(userProfile, null, 2);
+    }
+
+    // TASK 7: Calculator (let variables for intermediate values)
+    let currentInput = '0';
+    let previousInput = '0';
+    let operation = null;
+
+    
+
+    function clearCalc() {
+      currentInput = '0';
+      previousInput = '0';
+      operation = null;
+      document.getElementById('calcDisplay').textContent = '0';
+      document.getElementById('calcLog').textContent = 'Cleared!';
+    }
+
+    // TASK 3: Loop Counter (let in loop)
+    function runLoop() {
+      let counter = 1;
+      let results = [];
+      document.getElementById('loopDisplay').innerHTML = '';
+      
+      for (let i = 1; i <= 10; i++) {
+        counter *= i;  // Factorial calculation
+        results.push(`Loop ${i}: counter = ${counter}`);
+      }
+      
+      document.getElementById('loopDisplay').innerHTML = results.map(r => `<div>${r}</div>`).join('');
+    }
+
+    // TASK 4: Shopping Cart (const item - update quantity)
+    const cartItem = {
+      name: "JavaScript Course",
+      price: 99,
+      quantity: 1
+    };
+
+    function addToCart() {
+      cartItem.quantity++;
+      updateCartDisplay();
+    }
+
+    function removeFromCart() {
+      if (cartItem.quantity > 0) {
+        cartItem.quantity--;
+        updateCartDisplay();
+      }
+    }
+
+    function updateCartDisplay() {
+      document.getElementById('cartDisplay').textContent = JSON.stringify(cartItem, null, 2);
+      document.getElementById('cartTotal').textContent = (cartItem.price * cartItem.quantity).toFixed(2);
+    }
+
+
+  
+  </script>
+</body>
+</html>
