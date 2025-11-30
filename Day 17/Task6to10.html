@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      min-height: 100px;
+    }
+    .container {
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    h1 {
+     text-align: center; margin-bottom: 30px;
+     }
+    .dynamic-text {
+      font-size: 24px;
+      font-weight: bold;
+      background: rgba(255,255,255,0.2);
+      padding: 15px;
+      border-radius: 10px;
+      margin: 20px 0;
+      text-align: center;
+      min-height: 60px;
+    }
+    button {
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background: red;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+    }
+    .about-section {
+      background: rgba(255,255,255,0.15);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1> JavaScript Interactive Demo</h1>
+
+    <!-- TASK 1: Dynamic text display -->
+    <div>
+      <h2>Dynamic Text</h2>
+      <p>Click the button to change the text dynamically:</p>
+      <button onclick="changeDynamicText()">Change Text</button>
+      <div id="dynamicText" class="dynamic-text">
+        Click the button to see dynamic JavaScript in action!
+      </div>
+    </div>
+
+    <!-- TASK 4: Button that changes <p> text -->
+    <div>
+      <h2>Interactive Paragraph</h2>
+      <p id="changeableText">This paragraph will change when you click the button below.</p>
+      <button onclick="changeParagraph()">Change Paragraph Text</button>
+    </div>
+
+    <!-- TASK 5: About Me section -->
+    <div class="about-section">
+      <h2>About Me</h2>
+      <p>Click the button to see personal details in the console (F12 → Console):</p>
+      <button onclick="aboutMe()">Show About Me</button>
+    </div>
+  </div>
+
+  <script>
+    // TASK 2: Welcome alert when page loads
+    window.onload = function() {
+      alert("Welcome to my JavaScript Demo! By Kishorre R P.");
+    };
+
+    // TASK 3: Log favorite hobby, food, and color
+    console.log(" My Favorites ");
+    console.log("Favorite Hobby: Playing Football ⚽");
+    console.log("Favorite Food: Green rice ");
+    console.log("Favorite Color: Green");
+
+    // TASK 1: Display dynamic text using JavaScript
+    let dynamicMessages = [
+      "JavaScript makes web pages alive! ✨",
+      "Dynamic content changes without reload! 🚀",
+      "You're learning front-end development! 💪",
+      "HTML + CSS + JS = Amazing websites! 🌟"
+    ];
+    let messageIndex = 0;
+
+    
+
+    // TASK 4: Button changes text inside <p>
+    let paragraphMessages = [
+      "You just clicked the button! ",
+      "JavaScript updated this paragraph dynamically!",
+      "Front-end development rocks! 🔥",
+      "Keep practicing - you're doing great! "
+    ];
+    let paraIndex = 0;
+
+    
+
+    // TASK 5: About Me script - prints multiple details to console
+    function aboutMe() {
+      console.log(" ABOUT ME ");
+      console.log("Name: Kishorre R P");
+      console.log("Age: 21");
+      console.log("Profession: Junior Web Developer");
+      console.log("Skills: HTML, CSS, JavaScript, Java");
+      console.log("Current Focus: Building portfolio projects");
+      console.log("Hobbies: Football, Astronomy");
+      alert("Check the console (F12 → Console tab) for About Me details! 📋");
+    }
+  </script>
+</body>
+</html>
