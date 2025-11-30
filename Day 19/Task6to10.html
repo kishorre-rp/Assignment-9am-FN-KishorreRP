@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Task6 to10</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            padding: 20px;
+        }
+        h2 {
+            color: gray;
+        }
+        .box {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 8px 12px;
+            border: none;
+            background: skyblue;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: blue;
+        }
+        .output {
+            margin-top: 10px;
+            font-weight: bold;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript </h1>
+
+    <!-- Student Profile -->
+    <div class="box">
+        <h2>1. Student Profile (Object + Strings + Numbers)</h2>
+        <button onclick="showStudent()">Show Student Profile</button>
+        <div id="studentOutput" class="output"></div>
+    </div>
+
+    <!-- Product Price Calculator -->
+    <div class="box">
+        <h2>2. Product Price Calculator (String → Number)</h2>
+        <button onclick="calculatePrice()">Calculate Total Price</button>
+        <div id="priceOutput" class="output"></div>
+    </div>
+
+    <!-- Login Status -->
+    <div class="box">
+        <h2>3. Login Status Indicator (Boolean)</h2>
+        <button onclick="showLoginStatus()">Check Login</button>
+        <div id="loginOutput" class="output"></div>
+    </div>
+
+    <!-- BigInt Example -->
+    <div class="box">
+        <h2>4. BigInt Large Number Addition</h2>
+        <button onclick="bigIntAdd()">Add Big Numbers</button>
+        <div id="bigIntOutput" class="output"></div>
+    </div>
+
+    <!-- Symbol IDs -->
+    <div class="box">
+        <h2>5. Users with Unique Symbol IDs</h2>
+        <button onclick="showUsers()">Show Users</button>
+        <div id="symbolOutput" class="output"></div>
+    </div>
+
+    <script>
+        // 1. Student Profile
+        function showStudent() {
+            const student = {
+                name: "Kishorre R P",
+                age: 21,
+                course: "BE",
+                rollNo: 1021
+            };
+            document.getElementById("studentOutput").innerHTML =
+                'Name:', student.name <br>
+                 'Age:' ,student.age <br>
+                 'Course:', student.course <br>
+                 'Roll No:', student.rollNo;
+        }
+
+        // 2. Product Price Calculator (string to number conversion)
+        function calculatePrice() {
+            let price = "499";  
+            let quantity = "3";
+
+            let total = Number(price) * Number(quantity);
+
+            document.getElementById("priceOutput").innerHTML =
+                `Price: ₹${price} * Quantity: ${quantity} = <b>₹${total}</b>`;
+        }
+
+        // 3. Login Status (Boolean)
+        function showLoginStatus() {
+            let isLoggedIn = true;
+
+            document.getElementById("loginOutput").innerHTML =
+                isLoggedIn ? "User is Logged In ✔" : "User is Logged Out ❌";
+        }
+
+        // 4. BigInt example
+        function bigIntAdd() {
+            let num1 = 987654321987654321987654321n;
+            let num2 = 123456789123456789123456789n;
+
+            let result = num1 + num2;
+
+            document.getElementById("bigIntOutput").innerHTML =
+                `${num1} + ${num2} = <br><b>${result}</b>`;
+        }
+
+        // 5. Unique Symbol IDs
+        function showUsers() {
+            const user1 = { id: Symbol("ID"), name: "Santhosh" };
+            const user2 = { id: Symbol("ID"), name: "Kishorre" };
+            const user3 = { id: Symbol("ID"), name: "jeeva" };
+
+            document.getElementById("symbolOutput").innerHTML =
+                `${user1.name} → ${user1.id.toString()} <br>
+                 ${user2.name} → ${user2.id.toString()} <br>
+                 ${user3.name} → ${user3.id.toString()}`;
+        }
+    </script>
+
+</body>
+</html>
