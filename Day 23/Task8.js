@@ -3,7 +3,7 @@ function Vehicle(wheels) {
     this.wheels = wheels;
 }
 Vehicle.prototype.drive = function() {
-    return `This vehicle is moving on ${this.wheels} wheels.`;
+    return `This veicle is moving on ${this.wheels} wheels.`;
 };
 
 
