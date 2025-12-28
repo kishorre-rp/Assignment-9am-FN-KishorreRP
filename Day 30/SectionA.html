@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section A</title>
+    <style>
+        body{
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+    <p>1. What is asynchronous JavaScript? Why is it needed? <br><br>
+
+Answer:
+Asynchronous JavaScript executes code without blocking the main thread. 
+JavaScript is single-threaded, so operations like API calls, file reading, or timers would freeze the UI if synchronous. 
+Async allows non-blocking execution, keeping web pages responsive. <br><br>
+
+
+2. Explain callback functions with a real-life example.<br><br>
+
+
+Answer:
+Callback is a function passed as an argument to another function, executed after a task completes.
+Example: Ordering food at a restaurant - you give your order (callback) to waiter, who notifies you when food is ready. Code: getPizza(callback) calls callback("pizza ready") when done.
+
+<br><br>
+3. What is callback hell? Why is it a problem?<br><br>
+
+Answer:
+Callback hell is nested callbacks creating pyramid-shaped, unreadable code:
+
+js
+getUser(userId, (user) => {
+  getPosts(user.id, (posts) => {
+    getComments(posts[0].id, (comments) => { /* nightmare */ });
+  });
+});
+Problem: Hard to read, debug, and maintain. Error handling becomes complex.
+
+<br><br>
+4. Define a Promise and explain its states.<br><br>
+
+Answer:
+Promise is an object representing eventual completion/failure of async operation.
+3 States:
+
+Pending: Initial state, neither fulfilled nor rejected
+
+Fulfilled/Resolved: Operation succeeded, result available
+
+Rejected: Operation failed, error available
+
+<br><br>
+
+5. Difference between callbacks and promises.
+
+<br><br>
+Answer:
+Callbacks	Promises
+Function passed as argument	Object with future value
+Nested → callback hell	Chainable .then().catch()
+Error handling manual	Built-in .catch()
+One-time use	Reusable result
+
+<br><br>
+
+6. Why is async/await preferred over .then()?
+
+<br><br>
+Answer:
+js
+// .then() - verbose
+fetchData().then(data => process(data)).catch(err => handle(err));
+
+// async/await - readable like sync code
+try {
+  const data = await fetchData();
+  process(data);
+} catch(err) {
+  handle(err);
+}
+Benefits: Linear code, easier debugging, better error handling with try/catch.
+
+
+<br><br>
+7. Can await be used without async? Why?
+<br><br>
+Answer:
+No. await can only be used inside async functions.
+Reason: await pauses function execution until Promise settles. Without async, it throws SyntaxError. async creates Promise context.
+
+
+<br><br>
+8. What happens if a promise is rejected?
+
+<br><br>
+Answer:
+Rejected Promise:
+
+.then() callbacks skip, .catch() executes
+
+await throws error (caught by try/catch)
+
+Unhandled → Uncaught (in promise) console error
+
+js
+Promise.reject("Error")
+  .then(() => console.log("Never runs"))
+  .catch(err => console.log(err)); // "Error"
+
+
+<br><br>
+9. Explain error handling in async/await.
+
+<br><br>
+Answer:
+js
+async function fetchData() {
+  try {
+    const response = await fetch('/api/data');
+    if (!response.ok) throw new Error('HTTP error');
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch failed:', error);
+    throw error; // re-throw or handle
+  }
+}
+Key: try/catch wraps await, catches both network errors AND Promise rejections.
+
+
+
+<br><br>
+10. Write one real-world use case for asynchronous JavaScript.
+
+<br><br>
+Answer:
+Search-as-you-type: User types in search box → API fetches results → display without page reload.
+
+js
+input.addEventListener('input', debounce(async (e) => {
+  const results = await searchAPI(e.target.value);
+  renderResults(results);
+}, 300));</p>
+    
+</body>
+</html>

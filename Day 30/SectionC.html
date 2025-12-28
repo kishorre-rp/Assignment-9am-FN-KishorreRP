@@ -1,0 +1,159 @@
+<!-- 1. How would you handle an API call that takes time to respond?
+
+
+
+Answer:
+
+js
+async function handleSlowAPI(url) {
+  // 1. Show loading state
+  showSpinner();
+  updateUI('Fetching data...');
+  
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
+  
+  try {
+    const response = await fetch(url, { 
+      signal: controller.signal,
+      headers: { 'Cache-Control': 'no-cache' }
+    });
+    
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    
+    const data = await response.json();
+    clearTimeout(timeoutId);
+    hideSpinner();
+
+
+
+    
+    // 2. Success - optimistic update
+    renderData(data);
+    return data;
+    
+  } catch (error) {
+    clearTimeout(timeoutId);
+    hideSpinner();
+    
+    // 3. Graceful error handling
+    if (error.name === 'AbortError') {
+      showToast('Request timeout - try again', 'warning');
+      loadCachedData(); // Fallback
+    } else {
+      showToast(`Error: ${error.message}`, 'error');
+      trackError(error); // Analytics
+    }
+  }
+}
+Key: Loading UI + timeout + cache fallback
+
+
+
+
+
+
+2. Why should long tasks not block the main thread?
+Real Impact on 60fps UI:
+
+
+Answer:
+
+text
+Timeline when main thread blocks (5s API call):
+0s:     User clicks button    ← Input registered
+0.1s:   UI freezes completely ←  No repaints
+5s:     API returns           ← UI updates
+5.1s:   User clicks again     ← Feels "broken"
+
+Without blocking:
+0s:     User clicks            Responsive
+0.1s:   Spinner shows          60fps maintained
+5s:     Data renders           Smooth throughout
+Main thread jobs: Paint, layout, event loop. Blocking = janky UX
+
+
+
+
+
+3. Which async method for large application and why?
+
+
+
+Answer:
+
+Enterprise Choice: async/await (95% usage)
+
+Scenario	Method	Example
+User dashboard	async/await	Sequential API calls
+Bulk uploads	Promise.all()	Parallel operations
+Image processing	Web Workers	CPU-intensive
+js
+// Large e-commerce app
+class DashboardService {
+  async loadDashboard() {
+    const [users, orders, revenue] = await Promise.all([
+      this.fetchUsers(),
+      this.fetchOrders(),
+      this.fetchRevenue()
+    ]);
+    
+    // Single try/catch for entire flow
+    return this.combineData(users, orders, revenue);
+  }
+}
+Why async/await: Team readable, VSCode IntelliSense, stack traces
+
+
+
+
+4. How do promises improve readability? (Before/After)
+
+
+
+Answer:
+
+Callback Hell (500+ LOC nightmare):
+
+js
+//  6 nested levels = unmaintainable
+api.login(creds, (user) => {
+  api.getProfile(user.id, (profile) => {
+    api.getOrders(profile.id, (orders) => {
+      // ... nightmare continues
+Promise Chain (readable):
+
+js
+//  Linear flow + single error handler
+api.login(creds)
+  .then(user => api.getProfile(user.id))
+  .then(profile => api.getOrders(profile.id))
+  .then(displayDashboard)
+  .catch(showErrorToast); // ONE error handler!
+Readability: 80% less indentation, logical sequence
+
+
+
+
+5. How does async/await simplify debugging? (DevTools Screenshots)
+
+
+
+Answer:
+
+Promise Chain Debugging Pain:
+
+text
+Chrome DevTools:
+loadDashboard.js:12 Uncaught (in promise) TypeError
+           at .then (loadDashboard.js:8)
+           at .then (loadDashboard.js:5)  ← Chopped stack!
+async/await Debugging Heaven:
+
+text
+Chrome DevTools:
+loadDashboard.js:15 TypeError: Cannot read property
+    at loadDashboard (loadDashboard.js:15)  ← EXACT LINE!
+    at App.render (App.js:42)
+    at index.js:10
+Breakpoints work normally, hover shows values, call stack complete -->
