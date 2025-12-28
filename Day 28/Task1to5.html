@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JS Debugging Practice</title>
+</head>
+<body>
+  <h2>Debugging Tasks</h2>
+
+  <button id="syntax-btn">Run Syntax Error Example</button>
+  <button id="runtime-btn">Run Runtime Error Example</button>
+  <button id="logic-btn">Run Logical Error Example</button>
+
+  <p id="console-error-text">
+    Open DevTools (F12) → Console tab to see errors and logs.
+  </p>
+
+  <script>
+    // 1. Identify syntax errors in given code
+    // Example: missing closing quote or parenthesis would cause a SyntaxError and stop the script. 
+    // WRONG (do not uncomment):
+    // console.log("Hello world); // SyntaxError: Invalid or unexpected token
+
+    // Correct version:
+    console.log("Syntax OK: script started");
+
+    // Button to *show* an example of syntax vs correct code (text only)
+    document.getElementById("syntax-btn").addEventListener("click", () => {
+      console.log("Example of bad syntax (text only):");
+      console.log('Bad:  if (x > 10 { console.log("hi"); }');
+      console.log('Fix:  if (x > 10) { console.log("hi"); }');
+    });
+
+    // 2. Fix a runtime error
+    // Runtime errors happen while code is running, for example using an undefined variable
+    document.getElementById("runtime-btn").addEventListener("click", () => {
+      try {
+        // WRONG: will throw ReferenceError if uncommented
+        // console.log(userName); // userName is not defined
+
+        // FIX: define the variable before using it
+        const userName = "Debug User";
+        console.log("Runtime fixed. userName =", userName);
+      } catch (err) {
+        console.error("Caught runtime error:", err);
+      }
+    });
+
+    // 3. Find logical mistake in condition
+    function isAdult(age) {
+      // BUG: using < instead of >=
+      // if (age < 18) return true;   // logical error
+
+      // FIX:
+      if (age >= 18) return true;
+      return false;
+    } 
+
+    document.getElementById("logic-btn").addEventListener("click", () => {
+      console.log("Logical check:");
+      console.log("isAdult(16) should be false →", isAdult(16));
+      console.log("isAdult(20) should be true →", isAdult(20));
+    });
+
+    // 4. Read and explain console error
+ 
+    try {
+      // Uncomment to see an actual ReferenceError:
+      // let result = notDefinedVar + 1;
+     
+    } catch (e) {
+      console.error("Example ReferenceError:", e);
+    }
+
+    // 5. Use console.log to debug
+    function addPrices(a, b) {
+      console.log("addPrices called with:", a, b); 
+      const sum = a + b;
+      console.log("Calculated sum:", sum); 
+      return sum;
+    } 
+
+    
+    addPrices(100, 250);
+  </script>
+</body>
+</html>

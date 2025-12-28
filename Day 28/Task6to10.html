@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Error & Debug 6 to 10 tasks</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: lightgreen; }
+    section { margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid #ddd; }
+    .error { color: red; font-size: 14px; }
+    .ok { color: orange }
+    input { margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <h2>Error & Debug Practice</h2>
+
+  <!-- 1. Error-finding quiz app -->
+  <section>
+    <h3>1. Error-finding Quiz</h3>
+    <p>What is wrong with this JavaScript line?</p>
+    <pre id="quiz-code">const x = 5
+console.log(x))</pre>
+    <button id="quiz-check">Check Answer</button>
+    <p id="quiz-feedback"></p>
+  </section>
+
+  <!-- 2. Login form with validation errors -->
+  <section>
+    <h3>2. Login Form Validation</h3>
+    <form id="login-form">
+      <div>
+        <label>Email:
+          <input type="email" id="login-email">
+        </label>
+        <div id="login-email-error" class="error"></div>
+      </div>
+      <div>
+        <label>Password:
+          <input type="password" id="login-password">
+        </label>
+        <div id="login-password-error" class="error"></div>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p id="login-status"></p>
+  </section>
+
+  <!-- 3. Calculator with error checks -->
+  <section>
+    <h3>3. Calculator With Error Checks</h3>
+    <input type="text" id="calc-a" placeholder="Number A">
+    <input type="text" id="calc-b" placeholder="Number B">
+    <select id="calc-op">
+      <option value="+">+</option>
+      <option value="-">−</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <button id="calc-btn">Compute</button>
+    <p>Result: <strong id="calc-result">—</strong></p>
+    <p id="calc-error" class="error"></p>
+  </section>
+
+  <!-- 4. Debug broken JavaScript app -->
+  <section>
+    <h3>4. Debug Broken App (Intentional Bug)</h3>
+    <button id="broken-btn">Run Broken Code</button>
+    <p>Open console to see the error and the fixed version.</p>
+  </section>
+
+  <!-- 5. Input validation project -->
+  <section>
+    <h3>5. Input Validation (Age)</h3>
+    <label>
+      Enter age:
+      <input type="text" id="age-input">
+    </label>
+    <button id="age-check">Validate</button>
+    <p id="age-message"></p>
+  </section>
+
+  <script>
+    // 1. Error-finding quiz app
+    const quizCheckBtn = document.getElementById("quiz-check");
+    const quizFeedback = document.getElementById("quiz-feedback");
+
+    quizCheckBtn.addEventListener("click", () => {
+      quizFeedback.innerHTML =
+        "There are two errors:<br>" +
+        "1) Missing semicolon is OK in JS, but main problem is the extra ')' at the end.<br>" +
+        "2) Correct version: <code>const x = 5; console.log(x);</code>";
+    });
+
+    // 2. Login form with validation errors
+    const loginForm = document.getElementById("login-form");
+    const loginEmail = document.getElementById("login-email");
+    const loginPassword = document.getElementById("login-password");
+    const emailError = document.getElementById("login-email-error");
+    const passwordError = document.getElementById("login-password-error");
+    const loginStatus = document.getElementById("login-status");
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      emailError.textContent = "";
+      passwordError.textContent = "";
+      loginStatus.textContent = "";
+      loginStatus.className = "";
+
+      let valid = true;
+
+      if (!loginEmail.value.trim()) {
+        emailError.textContent = "Email is required.";
+        valid = false;
+      }
+
+      if (!loginPassword.value.trim()) {
+        passwordError.textContent = "Password is required.";
+        valid = false;
+      } else if (loginPassword.value.length < 6) {
+        passwordError.textContent = "Password must be at least 6 characters.";
+        valid = false;
+      }
+
+      if (valid) {
+        loginStatus.textContent = "Login successful (demo).";
+        loginStatus.className = "ok";
+      } else {
+        loginStatus.textContent = "Please fix the errors above.";
+        loginStatus.className = "error";
+      }
+    }); 
+
+    // 3. Calculator with error checks
+    const calcA = document.getElementById("calc-a");
+    const calcB = document.getElementById("calc-b");
+    const calcOp = document.getElementById("calc-op");
+    const calcBtn = document.getElementById("calc-btn");
+    const calcResult = document.getElementById("calc-result");
+    const calcError = document.getElementById("calc-error");
+
+    calcBtn.addEventListener("click", () => {
+      calcError.textContent = "";
+      const a = Number(calcA.value);
+      const b = Number(calcB.value);
+
+      if (calcA.value.trim() === "" || calcB.value.trim() === "") {
+        calcError.textContent = "Both inputs are required.";
+        calcResult.textContent = "—";
+        return;
+      }
+      if (Number.isNaN(a) || Number.isNaN(b)) {
+        calcError.textContent = "Inputs must be valid numbers.";
+        calcResult.textContent = "—";
+        return;
+      }
+      if (calcOp.value === "/" && b === 0) {
+        calcError.textContent = "Cannot divide by zero.";
+        calcResult.textContent = "—";
+        return;
+      }
+
+      let result;
+      switch (calcOp.value) {
+        case "+": result = a + b; break;
+        case "-": result = a - b; break;
+        case "*": result = a * b; break;
+        case "/": result = a / b; break;
+      }
+      calcResult.textContent = result;
+    }); 
+
+    // 4. Debug broken JavaScript app
+    const brokenBtn = document.getElementById("broken-btn");
+
+    brokenBtn.addEventListener("click", () => {
+      console.log("Running broken code example...");
+      try {
+        // BUGGY LINE (common error: using wrong variable name)
+        // let total = price1 + price2; // price1 is not defined -> ReferenceError
+
+       
+        const priceA = 100;
+        const priceB = 50;
+        const total = priceA + priceB;
+        console.log("Fixed total =", total);
+      } catch (err) {
+        console.error("Broken app error:", err);
+        console.log("Read the error name and message to know what went wrong.");
+      }
+    }); 
+
+    // 5. Input validation project (Age)
+    const ageInput = document.getElementById("age-input");
+    const ageCheckBtn = document.getElementById("age-check");
+    const ageMessage = document.getElementById("age-message");
+
+    ageCheckBtn.addEventListener("click", () => {
+      ageMessage.textContent = "";
+      ageMessage.className = "";
+
+      const value = ageInput.value.trim();
+      const age = Number(value);
+
+      if (!value) {
+        ageMessage.textContent = "Age is required.";
+        ageMessage.className = "error";
+      } else if (Number.isNaN(age)) {
+        ageMessage.textContent = "Age must be a number.";
+        ageMessage.className = "error";
+      } else if (age < 0 || age > 120) {
+        ageMessage.textContent = "Age must be between 0 and 120.";
+        ageMessage.className = "error";
+      } else if (age < 18) {
+        ageMessage.textContent = "You are a minor.";
+        ageMessage.className = "ok";
+      } else {
+        ageMessage.textContent = "You are an adult.";
+        ageMessage.className = "ok";
+      }
+    }); 
+  </script>
+</body>
+</html>
