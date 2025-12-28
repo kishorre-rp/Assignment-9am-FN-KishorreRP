@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Task1 to 5</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+    section { margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+    button { padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer; }
+    .demo-output { background: #f5f5f5; padding: 12px; border-radius: 4px; margin-top: 8px; }
+    pre { background: #f4f4f4; padding: 12px; border-radius: 4px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Task 1 to 5</h1>
+
+  <!-- 1. Closure counter -->
+  <section>
+    <h2>1. Closure: Button Click Counter</h2>
+    <button id="click-counter">Click Me!</button>
+    <div id="closure-output" class="demo-output">Clicks: 0</div>
+    <p><em>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, quae..</em></p>
+  </section>
+
+  <!-- 2. Callback setTimeout -->
+  <section>
+    <h2>2. Callback with setTimeout</h2>
+    <button id="timeout-btn">Delayed Message (Callback)</button>
+    <div id="callback-output" class="demo-output"></div>
+  </section>
+
+  <!-- 3. Promise version -->
+  <section>
+    <h2>3. Promise Version</h2>
+    <button id="promise-btn">Delayed Message (Promise)</button>
+    <div id="promise-output" class="demo-output"></div>
+  </section>
+
+  <!-- 4. Async/await with try/catch -->
+  <section>
+    <h2>4. Async/Await with Try/Catch</h2>
+    <button id="async-btn">Fetch Data (Async/Await)</button>
+    <div id="async-output" class="demo-output"></div>
+  </section>
+
+  <!-- 5. Object destructuring -->
+  <section>
+    <h2>5. Object Destructuring</h2>
+    <button id="destructure-btn">Process User Data</button>
+    <pre id="destructure-output" class="demo-output">{}</pre>
+  </section>
+
+  <script>
+    // 1. CLOSURE: Click counter (private variable persists)
+    function createClickCounter() {
+      let count = 0; 
+      
+      return function() {
+        count++;
+        return count;
+      };
+    }
+
+    const clickCounter = createClickCounter();
+    const clickBtn = document.getElementById('click-counter');
+    const closureOutput = document.getElementById('closure-output');
+
+    clickBtn.addEventListener('click', () => {
+      const clicks = clickCounter();
+      closureOutput.textContent = `Clicks: ${clicks}`;
+    }); 
+
+    // 2. CALLBACK with setTimeout
+    const timeoutBtn = document.getElementById('timeout-btn');
+    const callbackOutput = document.getElementById('callback-output');
+
+    function delayedCallback(message, callback) {
+      setTimeout(() => {
+        callback(message);
+      }, 1500);
+    }
+
+    timeoutBtn.addEventListener('click', () => {
+      timeoutBtn.disabled = true;
+      timeoutBtn.textContent = 'Loading...';
+      
+      delayedCallback('Callback executed after 1.5s!', (msg) => {
+        callbackOutput.textContent = msg;
+        timeoutBtn.disabled = false;
+        timeoutBtn.textContent = 'Delayed Message (Callback)';
+      });
+    }); 
+
+    // 3. PROMISE version of same logic
+    const promiseBtn = document.getElementById('promise-btn');
+    const promiseOutput = document.getElementById('promise-output');
+
+    function delayedPromise(message) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (message.length > 3) {
+            resolve(message);
+          } else {
+            reject('Message too short!');
+          }
+        }, 1500);
+      });
+    }
+
+    promiseBtn.addEventListener('click', () => {
+      promiseBtn.disabled = true;
+      promiseBtn.textContent = 'Loading...';
+      
+      delayedPromise('Promise resolved after 1.5s!')
+        .then(msg => {
+          promiseOutput.textContent = msg;
+        })
+        .catch(err => {
+          promiseOutput.textContent = `Error: ${err}`;
+          promiseOutput.style.color = 'red';
+        })
+        .finally(() => {
+          promiseBtn.disabled = false;
+          promiseBtn.textContent = 'Delayed Message (Promise)';
+          promiseOutput.style.color = '';
+        });
+    }); 
+
+    // 4. ASYNC/AWAIT with try/catch
+    const asyncBtn = document.getElementById('async-btn');
+    const asyncOutput = document.getElementById('async-output');
+
+    asyncBtn.addEventListener('click', async () => {
+      asyncBtn.disabled = true;
+      asyncBtn.textContent = 'Loading...';
+      
+      try {
+        const data = await delayedPromise('Async/Await works!');
+        asyncOutput.innerHTML = `
+           Success!<br>
+          Data: ${data}<br>
+          Time: ${new Date().toLocaleTimeString()}
+        `;
+      } catch (error) {
+        asyncOutput.innerHTML = `
+           Error!<br>
+          ${error.message}
+        `;
+        asyncOutput.style.color = 'red';
+      } finally {
+        asyncBtn.disabled = false;
+        asyncBtn.textContent = 'Fetch Data (Async/Await)';
+        asyncOutput.style.color = '';
+      }
+    });
+
+    // 5. OBJECT DESTRUCTURING
+    const destructureBtn = document.getElementById('destructure-btn');
+    const destructureOutput = document.getElementById('destructure-output');
+
+    // Sample user object
+    const userData = {
+      name: 'Kishorre R P',
+      email: 'kishorrerp21@gmail.com',
+      age: 21,
+      role: 'SOftware Developer',
+      skills: ['JavaScript', 'React', 'Java']
+    };
+
+    destructureBtn.addEventListener('click', () => {
+     
+      const { name, email, age, role, skills: userSkills } = userData;
+      
+      
+      destructureOutput.textContent = JSON.stringify({
+        name,
+        email, 
+        age,
+        role,
+        totalSkills: userSkills.length,
+        firstSkill: userSkills[0],
+        SecondSkill: userSkills[1],
+        ThirdSkill: userSkills[2]
+      }, null, 2);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Task 6 to 10</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 20px; max-width: 900px; margin: 0 auto;
+background-color: grey; }
+    section { margin-bottom: 30px; padding: 24px; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    h2 { color: #333; margin-top: 0; }
+    button { padding: 10px 20px; margin: 4px; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; }
+    .btn-primary { background: blue; color: white; }
+    .btn-success { background: greenyellow; color: white; }
+    .btn-danger { background: red; color: white; }
+    .demo-output { background: whitesmoke; padding: 16px; border-radius: 8px; margin-top: 12px; border-left: 4px solid #007bff; }
+    input { padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; margin: 4px; }
+    .cart-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
+    .loading { opacity: 0.6; }
+    pre { background: #2d3748; color: #a0aec0; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>Advanced JavaScript Concepts</h1>
+
+  <!-- 1. Login counter using closure -->
+  <section>
+    <h2>1. Login Counter (Closure)</h2>
+    <p>Private counter tracks login attempts across sessions.</p>
+    <input type="text" id="login-username" placeholder="Username" />
+    <input type="password" id="login-password" placeholder="Password" />
+    <button class="btn-primary" id="login-btn">Login</button>
+    <button class="btn-danger" id="login-reset">Reset Counter</button>
+    <div id="login-output" class="demo-output">Login attempts: 0</div>
+  </section>
+
+  <!-- 2. Simulated API call using promise -->
+  <section>
+    <h2>2. Simulated API Call (Promise)</h2>
+    <button class="btn-primary" id="api-btn">Call API</button>
+    <div id="api-output" class="demo-output">Click button to simulate API call</div>
+  </section>
+
+  <!-- 3. Fetch user data with async/await -->
+  <section>
+    <h2>3. Fetch User Data (Async/Await)</h2>
+    <button class="btn-success" id="user-btn">Get User Data</button>
+    <div id="user-output" class="demo-output">Click to fetch user data</div>
+  </section>
+
+  <!-- 4. Shopping cart using spread operator -->
+  <section>
+    <h2>4. Shopping Cart (Spread Operator)</h2>
+    <button class="btn-primary" id="add-item-1">Add Laptop (+₹50,000)</button>
+    <button class="btn-primary" id="add-item-2">Add Phone (+₹25,000)</button>
+    <button class="btn-danger" id="clear-cart">Clear Cart</button>
+    <div id="cart-output" class="demo-output">
+      Cart: <strong>0 items</strong> | Total: <strong>₹0</strong>
+    </div>
+    <div id="cart-items"></div>
+  </section>
+
+  <!-- 5. Function accepting unlimited arguments using rest -->
+  <section>
+    <h2>5. Rest Parameters (Unlimited Args)</h2>
+    <button class="btn-success" id="rest-btn">Calculate Sum</button>
+    <div id="rest-output" class="demo-output">Click to sum multiple numbers</div>
+  </section>
+
+  <script>
+    // 1. LOGIN COUNTER USING CLOSURE
+    function createLoginCounter() {
+      let attempts = 0;
+      const maxAttempts = 3;
+      
+      return {
+        login: (username, password) => {
+          attempts++;
+          const output = document.getElementById('login-output');
+          
+          if (username === 'admin' && password === '123456') {
+            output.innerHTML = ` Login successful! (Attempt ${attempts}/${maxAttempts})`;
+            output.style.borderLeftColor = '#28a745';
+            return true;
+          } else if (attempts >= maxAttempts) {
+            output.innerHTML = ` Max attempts (${maxAttempts}) reached. Account locked.`;
+            output.style.borderLeftColor = '#dc3545';
+            return false;
+          } else {
+            output.innerHTML = ` Invalid credentials (Attempt ${attempts}/${maxAttempts})`;
+            output.style.borderLeftColor = '#ffc107';
+            return false;
+          }
+        },
+        reset: () => {
+          attempts = 0;
+          document.getElementById('login-output').innerHTML = 'Login attempts: 0';
+          document.getElementById('login-output').style.borderLeftColor = '#007bff';
+        }
+      };
+    }
+
+    const loginCounter = createLoginCounter();
+    const loginBtn = document.getElementById('login-btn');
+    const loginReset = document.getElementById('login-reset');
+    const loginUsername = document.getElementById('login-username');
+    const loginPassword = document.getElementById('login-password');
+
+    loginBtn.addEventListener('click', () => {
+      loginCounter.login(loginUsername.value, loginPassword.value);
+    });
+
+    loginReset.addEventListener('click', () => {
+      loginCounter.reset();
+      loginUsername.value = '';
+      loginPassword.value = '';
+    }); 
+
+    // 2. SIMULATED API CALL USING PROMISE
+    function simulateApiCall() {
+      return new Promise((resolve, reject) => {
+        const success = Math.random() > 0.2; 
+        
+        setTimeout(() => {
+          if (success) {
+            resolve({
+              id: 123,
+              status: 'success',
+              data: 'API data received!',
+              timestamp: new Date().toLocaleTimeString()
+            });
+          } else {
+            reject(new Error('API request failed - network error'));
+          }
+        }, 1200);
+      });
+    }
+
+    const apiBtn = document.getElementById('api-btn');
+    const apiOutput = document.getElementById('api-output');
+
+    apiBtn.addEventListener('click', () => {
+      apiBtn.disabled = true;
+      apiBtn.textContent = 'Loading...';
+      apiBtn.classList.add('loading');
+      
+      simulateApiCall()
+        .then(result => {
+          apiOutput.innerHTML = `
+             <strong>API Success!</strong><br>
+            ID: ${result.id}<br>
+            Data: ${result.data}<br>
+            Time: ${result.timestamp}
+          `;
+        })
+        .catch(error => {
+          apiOutput.innerHTML = ` <strong>API Error:</strong> ${error.message}`;
+          apiOutput.style.borderLeftColor = '#dc3545';
+        })
+        .finally(() => {
+          apiBtn.disabled = false;
+          apiBtn.textContent = 'Call API';
+          apiBtn.classList.remove('loading');
+          apiOutput.style.borderLeftColor = '#007bff';
+        });
+    }); 
+
+    // 3. FETCH USER DATA WITH ASYNC/AWAIT
+    async function fetchUserData(userId) {
+      
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      const users = {
+        1: { id: 1, name: 'Dinesh', email: 'Dinesh@gmail.com', role: 'Admin' },
+        2: { id: 2, name: 'Fayaz', email: 'Fayaz@gmail.com', role: 'User' },
+        3: { id: 3, name: 'Jeeva', email: 'Jeeva@gmail.com', role: 'Manager' }
+      };
+      
+      if (!users[userId]) {
+        throw new Error(`User ${userId} not found`);
+      }
+      
+      return users[userId];
+    }
+
+    const userBtn = document.getElementById('user-btn');
+    const userOutput = document.getElementById('user-output');
+
+    userBtn.addEventListener('click', async () => {
+      userBtn.disabled = true;
+      userBtn.textContent = 'Loading...';
+      
+      try {
+        const user = await fetchUserData(2); 
+        userOutput.innerHTML = `
+           <strong>${user.name}</strong><br>
+           ${user.email}<br>
+           Role: ${user.role}<br>
+          Fetched at ${new Date().toLocaleTimeString()}
+        `;
+      } catch (error) {
+        userOutput.innerHTML = `❌ Error: ${error.message}`;
+        userOutput.style.borderLeftColor = '#dc3545';
+      } finally {
+        userBtn.disabled = false;
+        userBtn.textContent = 'Get User Data';
+        userOutput.style.borderLeftColor = '#28a745';
+      }
+    }); 
+
+    // 4. SHOPPING CART USING SPREAD OPERATOR
+    let cart = [];
+
+    const addLaptopBtn = document.getElementById('add-item-1');
+    const addPhoneBtn = document.getElementById('add-item-2');
+    const clearCartBtn = document.getElementById('clear-cart');
+    const cartOutput = document.getElementById('cart-output');
+    const cartItems = document.getElementById('cart-items');
+
+    function updateCartDisplay() {
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      
+      cartOutput.innerHTML = `
+        Cart: <strong>${cart.length} items</strong> | 
+        Total: <strong>₹${total.toLocaleString()}</strong>
+      `;
+      
+      cartItems.innerHTML = cart.length ? 
+        cart.map(item => `
+          <div class="cart-item">
+            <span>${item.name}</span>
+            <span>₹${item.price.toLocaleString()}</span>
+          </div>
+        `).join('') : 
+        '<p style="color: #666; text-align: center;">Cart is empty</p>';
+    }
+
+    addLaptopBtn.addEventListener('click', () => {
+      
+      cart = [...cart, { id: Date.now(), name: 'Laptop', price: 50000 }];
+      updateCartDisplay();
+    });
+
+    addPhoneBtn.addEventListener('click', () => {
+      cart = [...cart, { id: Date.now(), name: 'Phone', price: 25000 }];
+      updateCartDisplay();
+    });
+
+    clearCartBtn.addEventListener('click', () => {
+      cart = []; 
+      updateCartDisplay();
+    }); 
+
+    // 5. FUNCTION ACCEPTING UNLIMITED ARGUMENTS USING REST
+    function calculateTotal(...numbers) {
+      const sum = numbers.reduce((total, num) => total + num, 0);
+      const avg = sum / numbers.length;
+      const max = Math.max(...numbers);
+      const min = Math.min(...numbers);
+      
+      return {
+        sum,
+        average: avg.toFixed(2),
+        max,
+        min,
+        count: numbers.length
+      };
+    }
+
+    const restBtn = document.getElementById('rest-btn');
+    const restOutput = document.getElementById('rest-output');
+
+    restBtn.addEventListener('click', () => {
+      
+      const result = calculateTotal(10, 20, 30, 40, 50, 100);
+      
+      restOutput.innerHTML = `
+         <strong>Calculation Results:</strong><br>
+        Sum: ₹${result.sum.toLocaleString()}<br>
+        Average: ₹${result.average}<br>
+        Max: ₹${result.max.toLocaleString()}<br>
+        Min: ₹${result.min.toLocaleString()}<br>
+        Count: ${result.count} numbers
+      `;
+    }); 
+  </script>
+</body>
+</html>

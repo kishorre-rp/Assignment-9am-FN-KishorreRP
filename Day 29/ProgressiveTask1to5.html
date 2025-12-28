@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product task</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    h2{
+        text-align: center;
+        color: red;
+    }
+    .hover-highlight {
+      transition: background-color 0.3s;
+    }
+    .hover-highlight:hover {
+      background-color: lightsalmon;
+    }
+    .loading { opacity: 0.6; }
+  </style>
+</head>
+<body class="bg-light">
+  <main class="container py-5">
+
+    <h2 id="main-title" class="mb-3" style="align-self: auto;">Product Showcase</h2>
+
+    <p class="text-muted">
+      Products created using JavaScript classes, objects, methods, inheritance, and array methods (forEach, filter, reduce).
+    </p>
+
+    <!-- New modern JS controls -->
+    <div class="mb-4 d-flex gap-2 flex-wrap">
+      <button id="change-title-btn" class="btn btn-primary btn-sm">
+        Change Page Title
+      </button>
+      <button id="toggle-bg-btn" class="btn btn-outline-secondary btn-sm">
+        Toggle Background Color
+      </button>
+      <button id="fetch-api-btn" class="btn btn-success btn-sm">
+        Fetch Live Data
+      </button>
+    </div>
+
+    <div id="product-list" class="row g-4 mb-5"></div>
+
+    <section id="store-section" class="hover-highlight p-3 rounded">
+      <h3 id="store-title" class="mb-3">Store Items (Array Methods)</h3>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h5>All items</h5>
+          <ul id="all-items" class="list-group mb-3"></ul>
+        </div>
+
+        <div class="col-md-6">
+          <h5>Items with price &lt; ₹500</h5>
+          <ul id="filtered-items" class="list-group mb-3"></ul>
+
+          <h5>Total price of all items</h5>
+          <p id="total-price" class="fw-semibold text-primary"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced form with closure-based private data -->
+    <section class="mt-4">
+      <h4 class="mb-2">Add Note (Closure + Validation)</h4>
+      <form id="note-form" class="row gy-2 gx-2 align-items-center">
+        <div class="col-sm-8">
+          <input
+            type="text"
+            id="note-input"
+            class="form-control"
+            placeholder="Write a short note..."
+          />
+          <div id="note-error" class="text-danger small mt-1"></div>
+        </div>
+        <div class="col-sm-4">
+          <button type="submit" class="btn btn-success w-100">
+            Save Note
+          </button>
+        </div>
+      </form>
+      <p id="note-output" class="mt-2 text-muted"></p>
+      <small>Total saved notes: <span id="note-count">0</span></small>
+    </section>
+
+    <!-- API response display -->
+    <section id="api-section" class="mt-4" style="display: none;">
+      <h4>Live API Data</h4>
+      <div id="api-output" class="alert alert-info"></div>
+    </section>
+  </main>
+
+  <script>
+    // ---------------------- CLOSURE: Private User Data Manager ----------------------
+    const userDataManager = (() => {
+    
+      let notes = [];
+      let totalNotes = 0;
+      let userPreferences = { theme: 'light', currency: 'INR' };
+
+      return {
+      
+        addNote: (note) => {
+          notes = [...notes, { id: Date.now(), text: note, timestamp: new Date().toLocaleString() }];
+          totalNotes++;
+          return notes.length;
+        },
+
+       
+        getNoteCount: () => totalNotes,
+
+        
+        updatePreference: (key, value) => {
+          userPreferences = { ...userPreferences, [key]: value };
+        },
+
+        
+        getNotes: () => [...notes] 
+      };
+    })(); 
+
+    // ---------------------- DATA & CLASSES ----------------------
+    const productData = [
+      {
+        name: "Pro Landing Template",
+        price: 1499,
+        description: "High-converting landing page for startups."
+      },
+      {
+        name: "Ecommerce UI Kit",
+        price: 1999,
+        description: "Product cards, filters, and checkout screens."
+      },
+      {
+        name: "Analytics Dashboard",
+        price: 2499,
+        description: "Dashboard with cards, charts, and KPIs."
+      }
+    ];
+
+    class Product {
+      constructor(name, price, description) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+      }
+
+      discountedPrice(discountPercent = 10) {
+        const discountAmount = (this.price * discountPercent) / 100;
+        return this.price - discountAmount;
+      }
+
+      displayProduct() {
+        console.log(`${this.name} - ₹${this.price}`);
+        console.log(this.description);
+        console.log(`Discounted (10%): ₹${this.discountedPrice(10)}`);
+        console.log("----");
+      }
+    }
+
+    class DigitalProduct extends Product {
+      constructor(name, price, description, fileSizeMB, downloadLink) {
+        super(name, price, description);
+        this.fileSizeMB = fileSizeMB;
+        this.downloadLink = downloadLink;
+      }
+
+      displayProduct() {
+        console.log(`${this.name} (Digital) - ₹${this.price}`);
+        console.log(this.description);
+        console.log(`Size: ${this.fileSizeMB} MB`);
+        console.log(`Download: ${this.downloadLink}`);
+        console.log(`Discounted (10%): ₹${this.discountedPrice(10)}`);
+        console.log("----");
+      }
+
+      getDownloadInfo() {
+        return `Download ${this.name} (${this.fileSizeMB} MB) from ${this.downloadLink}`;
+      }
+    }
+
+    const products = productData.map(
+      item => new Product(item.name, item.price, item.description)
+    );
+
+    const digitalLanding = new DigitalProduct(
+      "Pro Landing Template (Digital)",
+      1499,
+      "Bootstrap landing page with sections ready to use.",
+      12,
+      "https://example.com/download/landing"
+    );
+    products.push(digitalLanding);
+
+    // ---------------------- ASYNC/AWAIT API CALL ----------------------
+    async function fetchLiveProducts() {
+    
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+     
+      return {
+        success: true,
+        data: [
+          { id: 1, name: 'React Dashboard', price: 2999, type: 'digital' },
+          { id: 2, name: 'CSS Templates Pack', price: 799, type: 'digital' }
+        ],
+        timestamp: new Date().toLocaleString()
+      };
+    } // [web:141]
+
+    // ---------------------- RENDERING WITH TEMPLATE LITERALS ----------------------
+    const productListEl = document.getElementById("product-list");
+
+    async function renderProducts() {
+      if (!productListEl) {
+        console.warn("product-list element not found.");
+        return;
+      }
+
+      productListEl.innerHTML = ''; 
+
+      try {
+        // Original products + live API data
+        const allProducts = [...products, ...(await fetchLiveProducts()).data];
+        
+        allProducts.forEach((product, index) => {
+          const col = document.createElement("div");
+          col.className = "col-md-4";
+          
+          // TEMPLATE LITERALS for UI rendering
+          col.innerHTML = `
+            <div class="card shadow-sm h-100 hover-highlight">
+              <div class="card-body">
+                <h5 class="card-title">
+                  ${product.name || 'Unknown Product'}
+                  ${product.type === 'digital' ? '<span class="badge bg-info ms-1">Digital</span>' : ''}
+                </h5>
+                <p class="card-text mb-1">${product.description || 'No description available'}</p>
+                <p class="card-text fw-semibold mb-1">Price: ₹${product.price?.toLocaleString() || 'N/A'}</p>
+                ${product.type === 'digital' ? `
+                  <small class="text-muted">Live data from API</small>
+                  <a href="#" class="btn btn-sm btn-primary mt-2">Preview</a>
+                ` : ''}
+              </div>
+            </div>
+          `;
+          
+          productListEl.appendChild(col);
+        });
+      } catch (error) {
+        console.error('Failed to render products:', error);
+        productListEl.innerHTML = '<div class="col-12"><div class="alert alert-warning">Failed to load products</div></div>';
+      }
+    }
+
+    
+    renderProducts();
+
+  
+    const storeItems = [
+      { name: "Pen", price: 30 },
+      { name: "Notebook", price: 120 },
+      { name: "USB Cable", price: 250 },
+      { name: "Mouse Pad", price: 350 },
+      { name: "Headphones", price: 999 },
+      { name: "Laptop Stand", price: 1299 }
+    ];
+
+    const allItemsEl = document.getElementById("all-items");
+    const filteredItemsEl = document.getElementById("filtered-items");
+    const totalPriceEl = document.getElementById("total-price");
+
+    function safeRenderList(array, ulElement) {
+      if (!ulElement) return;
+      ulElement.innerHTML = "";
+      array.forEach(item => {
+        const li = document.createElement("li");
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
+        li.innerHTML = `
+          <span>${item.name}</span>
+          <span class="badge bg-secondary rounded-pill">₹${item.price}</span>
+        `;
+        ulElement.appendChild(li);
+      });
+    }
+
+    safeRenderList(storeItems, allItemsEl);
+    safeRenderList(storeItems.filter(item => item.price < 500), filteredItemsEl);
+
+    if (totalPriceEl) {
+      totalPriceEl.textContent = `Total: ₹${storeItems.reduce((sum, item) => sum + item.price, 0)}`;
+    }
+
+
+    const mainTitle = document.getElementById("main-title");
+    const storeTitle = document.querySelector("#store-section h3");
+    const changeTitleBtn = document.getElementById("change-title-btn");
+
+    if (changeTitleBtn && mainTitle && storeTitle) {
+      changeTitleBtn.addEventListener("click", () => {
+        mainTitle.textContent = "Interactive Product Showcase";
+        storeTitle.textContent = "Store Items (Updated with JS)";
+      });
+    }
+
+    const toggleBgBtn = document.getElementById("toggle-bg-btn");
+    let isAltBg = false;
+
+    if (toggleBgBtn) {
+      toggleBgBtn.addEventListener("click", () => {
+        isAltBg = !isAltBg;
+        document.body.style.backgroundColor = isAltBg ? "Pink" : "";
+        document.body.classList.toggle("bg-light", !isAltBg);
+        toggleBgBtn.textContent = isAltBg ? "Reset Background" : "Toggle Background Color";
+      });
+    }
+
+    // NEW: API fetch button with async/await + destructuring
+    const fetchApiBtn = document.getElementById("fetch-api-btn");
+    const apiSection = document.getElementById("api-section");
+    const apiOutput = document.getElementById("api-output");
+
+    if (fetchApiBtn) {
+      fetchApiBtn.addEventListener("click", async () => {
+        fetchApiBtn.disabled = true;
+        fetchApiBtn.textContent = "Loading...";
+        fetchApiBtn.classList.add("loading");
+
+        try {
+          // ASYNC/AWAIT + DESTRUCTURING
+          const { success, data: apiProducts, timestamp } = await fetchLiveProducts();
+          
+          if (success) {
+            apiOutput.innerHTML = `
+              ✅ <strong>API Success!</strong><br>
+              Products found: ${apiProducts.length}<br>
+              First product: ${apiProducts[0]?.name}<br>
+              Fetched: ${timestamp}
+            `;
+            apiSection.style.display = "block";
+            
+            // SPREAD: merge with existing products
+            renderProducts();
+          }
+        } catch (error) {
+          apiOutput.innerHTML = `❌ API Error: ${error.message}`;
+          apiSection.style.display = "block";
+        } finally {
+          fetchApiBtn.disabled = false;
+          fetchApiBtn.textContent = "Fetch Live Data";
+          fetchApiBtn.classList.remove("loading");
+        }
+      });
+    }
+
+  
+    const noteForm = document.getElementById("note-form");
+    const noteInput = document.getElementById("note-input");
+    const noteOutput = document.getElementById("note-output");
+    const noteError = document.getElementById("note-error");
+    const noteCount = document.getElementById("note-count");
+
+    if (noteForm && noteInput && noteOutput && noteError && noteCount) {
+      noteForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        noteError.textContent = "";
+
+        const value = noteInput.value.trim();
+        if (!value || value.length < 3) {
+          noteError.textContent = "Note must be at least 3 characters.";
+          return;
+        }
+
+      
+        userDataManager.addNote(value);
+        
+       
+        noteOutput.innerHTML = `
+          ✅ <strong>Saved:</strong> "${value}"<br>
+          <small>Total notes: ${userDataManager.getNoteCount()}</small>
+        `;
+        noteOutput.className = "text-success mt-2";
+        noteCount.textContent = userDataManager.getNoteCount();
+        noteInput.value = "";
+      });
+    }
+
+   
+    const storeSection = document.getElementById("store-section");
+    if (storeSection) {
+      storeSection.addEventListener("mouseover", () => {
+        storeSection.style.boxShadow = "0 0 0 0.2rem rgba(13,110,253,.15)";
+      });
+      storeSection.addEventListener("mouseout", () => {
+        storeSection.style.boxShadow = "none";
+      });
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
