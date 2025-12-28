@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DOM </title>
+</head>
+<body>
+  <!-- 1) Change heading text when button is clicked -->
+  <h1 id="main-heading">Original Heading</h1>
+  <button id="change-heading-btn">Change Heading Text</button>
+
+  <hr>
+
+  <!-- 2) Use querySelector() to change paragraph color -->
+  <p class="text">This paragraph color will change.</p>
+  <button id="color-btn">Change Paragraph Color</button>
+
+  <hr>
+
+  <!-- 3) Add 3 items dynamically with appendChild() -->
+  <!-- 4) Remove the first item with removeChild() -->
+  <ul id="item-list">
+    <li>Existing item 1</li>
+  </ul>
+  <button id="add-items-btn">Add 3 Items</button>
+  <button id="remove-first-btn">Remove First Item</button>
+
+  <hr>
+
+  <!-- 5) Click event to change page background color -->
+  <button id="bg-btn">Change Background Color</button>
+
+  <script>
+    // 1) Change the text of a heading when a button is clicked
+    const heading = document.getElementById("main-heading");
+    const changeHeadingBtn = document.getElementById("change-heading-btn");
+
+    changeHeadingBtn.addEventListener("click", function () {
+      heading.textContent = "Heading Text Changed!";
+    });
+
+    // 2) Use querySelector() to change the color of a paragraph
+    const paragraph = document.querySelector(".text");
+
+    document.getElementById("color-btn").addEventListener("click", function () {
+      paragraph.style.color = "red";
+    });
+
+    // 3) Add 3 items to a list dynamically using appendChild()
+    const list = document.getElementById("item-list");
+    const addItemsBtn = document.getElementById("add-items-btn");
+
+    addItemsBtn.addEventListener("click", function () {
+      for (let i = 1; i <= 3; i++) {
+        const li = document.createElement("li");
+        li.textContent = "New item " + i;
+        list.appendChild(li); // appendChild adds at the end of the list
+      }
+    });
+
+    // 4) Remove the first item of a list using removeChild()
+    const removeFirstBtn = document.getElementById("remove-first-btn");
+
+    removeFirstBtn.addEventListener("click", function () {
+      const firstItem = list.querySelector("li"); // first <li> inside the list
+      if (firstItem) {
+        list.removeChild(firstItem);
+      }
+    });
+
+    // 5) Add a click event to change the background color of the page
+    const bgBtn = document.getElementById("bg-btn");
+
+    bgBtn.addEventListener("click", function () {
+      // Toggle between two colors just for fun
+      if (document.body.style.backgroundColor === "lightblue") {
+        document.body.style.backgroundColor = "white";
+      } else {
+        document.body.style.backgroundColor = "lightblue";
+      }
+    });
+  </script>
+</body>
+</html>

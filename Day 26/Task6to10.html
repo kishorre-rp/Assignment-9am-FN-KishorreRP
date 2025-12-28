@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JS Practice Tasks</title>
+  <style>
+   
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      border-radius: 8px;
+      padding: 16px;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 4px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+    }
+
+    button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    input[type="text"] {
+      padding: 6px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      width: 100%;
+      max-width: 300px;
+      box-sizing: border-box;
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #f5f5f5;
+    }
+
+    .dark-mode .card {
+      background-color: #1e1e1e;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .dark-mode button {
+      background-color: #ff9800;
+    }
+
+   
+    #todo-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 10px;
+    }
+
+    #todo-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 6px 8px;
+      border-radius: 4px;
+      background-color: #f0f0f0;
+      margin-bottom: 6px;
+    }
+
+    .dark-mode #todo-list li {
+      background-color: #2b2b2b;
+    }
+
+    .todo-text {
+      flex: 1;
+    }
+
+    .todo-buttons button {
+      margin-left: 4px;
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+
+  
+    .color-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .color-buttons button {
+      min-width: 80px;
+    }
+
+ 
+    #live-output {
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 4px;
+      background-color: #eee;
+      min-height: 24px;
+    }
+
+    .dark-mode #live-output {
+      background-color: #303030;
+    }
+    #format-output {
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 4px;
+      background-color: #eee;
+      min-height: 24px;
+    }
+
+    .dark-mode #format-output {
+      background-color: #303030;
+    }
+  </style>
+</head>
+<body>
+  <h1>JS Practice Tasks</h1>
+  <div class="container">
+
+    <!-- 1. Dark mode toggle -->
+    <div class="card">
+      <h2>1. Dark Mode Button</h2>
+      <p>Click the button to toggle page theme between light and dark mode.</p>
+      <button id="dark-mode-toggle">Enable Dark Mode</button>
+    </div>
+
+    <!-- 2. Live text update -->
+    <div class="card">
+      <h2>2. Live Text Preview</h2>
+      <p>Type in the input field; the text below updates live.</p>
+      <input type="text" id="live-input" placeholder="Type something..." />
+      <div id="live-output"></div>
+    </div>
+
+    <!-- 3. To-do list using appendChild / removeChild -->
+    <div class="card">
+      <h2>3. To-Do List (appendChild/removeChild)</h2>
+      <p>Add tasks, then remove them using the Delete button.</p>
+      <input type="text" id="todo-input" placeholder="New task..." />
+      <button id="add-todo">Add Task</button>
+      <ul id="todo-list"></ul>
+    </div>
+
+    <!-- 4. Multiple color buttons with addEventListener -->
+    <div class="card">
+      <h2>4. Color Change Buttons</h2>
+      <p>Click a button to change its background color.</p>
+      <div class="color-buttons">
+        <button class="color-btn" data-color="crimson">Red</button>
+        <button class="color-btn" data-color="seagreen">Green</button>
+        <button class="color-btn" data-color="royalblue">Blue</button>
+        <button class="color-btn" data-color="goldenrod">Yellow</button>
+      </div>
+    </div>
+
+    <!-- 5. innerHTML with formatted HTML -->
+    <div class="card">
+      <h2>5. Dynamic innerHTML Formatting</h2>
+      <p>Click buttons to insert formatted text using innerHTML.</p>
+      <button id="make-bold">Insert Bold Text</button>
+      <button id="make-italic">Insert Italic Text</button>
+      <button id="clear-format">Clear</button>
+      <div id="format-output"></div>
+    </div>
+
+  </div>
+
+  <script>
+    // 1. Dark mode toggle (using classList.toggle)
+    const darkToggleBtn = document.getElementById('dark-mode-toggle');
+
+    darkToggleBtn.addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode');
+      const darkEnabled = document.body.classList.contains('dark-mode');
+      darkToggleBtn.textContent = darkEnabled ? 'Disable Dark Mode' : 'Enable Dark Mode';
+    });
+
+    // 2. Live text update using input event
+    const liveInput = document.getElementById('live-input');
+    const liveOutput = document.getElementById('live-output');
+
+    liveInput.addEventListener('input', function () {
+      liveOutput.textContent = liveInput.value;
+    });
+
+    // 3. To-do list with appendChild and removeChild
+    const todoInput = document.getElementById('todo-input');
+    const addTodoBtn = document.getElementById('add-todo');
+    const todoList = document.getElementById('todo-list');
+
+    addTodoBtn.addEventListener('click', function () {
+      const text = todoInput.value.trim();
+      if (!text) return;
+
+      // create li
+      const li = document.createElement('li');
+
+      // text span
+      const span = document.createElement('span');
+      span.className = 'todo-text';
+      span.textContent = text;
+
+      // button container
+      const btnWrapper = document.createElement('div');
+      btnWrapper.className = 'todo-buttons';
+
+      // delete button
+      const delBtn = document.createElement('button');
+      delBtn.textContent = 'Delete';
+
+      // optional: complete button (just for effect)
+      const doneBtn = document.createElement('button');
+      doneBtn.textContent = 'Done';
+
+      // append children
+      btnWrapper.appendChild(doneBtn);
+      btnWrapper.appendChild(delBtn);
+      li.appendChild(span);
+      li.appendChild(btnWrapper);
+      todoList.appendChild(li); // appendChild used here
+
+      // clear input
+      todoInput.value = '';
+
+      // delete handler using removeChild
+      delBtn.addEventListener('click', function () {
+        todoList.removeChild(li);
+      });
+
+      // mark as done
+      doneBtn.addEventListener('click', function () {
+        span.style.textDecoration = 'line-through';
+      });
+    });
+
+    // 4. Multiple buttons that change colors (addEventListener)
+    const colorButtons = document.querySelectorAll('.color-btn');
+
+    colorButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const newColor = btn.getAttribute('data-color');
+        btn.style.backgroundColor = newColor;
+      });
+    });
+
+    // 5. innerHTML for formatted HTML
+    const boldBtn = document.getElementById('make-bold');
+    const italicBtn = document.getElementById('make-italic');
+    const clearFormatBtn = document.getElementById('clear-format');
+    const formatOutput = document.getElementById('format-output');
+
+    boldBtn.addEventListener('click', function () {
+      formatOutput.innerHTML = '<b>This text is inserted using &lt;b&gt; and innerHTML.</b>';
+    });
+
+    italicBtn.addEventListener('click', function () {
+      formatOutput.innerHTML = '<i>This text is inserted using &lt;i&gt; and innerHTML.</i>';
+    });
+
+    clearFormatBtn.addEventListener('click', function () {
+      formatOutput.innerHTML = '';
+    });
+  </script>
+</body>
+</html>
