@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JS Practice – Interactions</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .row { margin-top: 20px; }
+    .menu { display: inline-block; position: relative; }
+    .menu-button {
+      padding: 8px 12px;
+      background: #007bff;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .menu-items {
+      position: absolute;
+      top: 110%;
+      left: 0;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      list-style: none;
+      padding: 5px 0;
+      margin: 0;
+      min-width: 140px;
+      display: none; 
+    }
+    .menu-items li {
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+    .menu-items li:hover {
+      background: #f0f0f0;
+    }
+    .counter-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .counter-value {
+      font-size: 24px;
+      font-weight: bold;
+      min-width: 40px;
+      text-align: center;
+    }
+    .click-box {
+      display: inline-block;
+      padding: 12px;
+      border: 1px solid #ccc;
+      margin-right: 8px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h2>JS Interaction Tasks</h2>
+
+  <!-- 1. Interactive counter button -->
+  <section class="row">
+    <h3>Interactive Counter Button</h3>
+    <div class="counter-box">
+      <button id="decrease">-</button>
+      <span id="counter" class="counter-value">0</span>
+      <button id="increase">+</button>
+      <button id="reset">Reset</button>
+    </div>
+  </section>
+
+  <!-- 2. Hover-based menu -->
+  <section class="row">
+    <h3>Hover-based Menu</h3>
+    <div class="menu" id="hover-menu">
+      <div class="menu-button">Menu ▾</div>
+      <ul class="menu-items" id="menu-items">
+        <li>Profile</li>
+        <li>Settings</li>
+        <li>Logout</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. Login form validation -->
+  <section class="row">
+    <h3>Login Form Validation</h3>
+    <form id="login-form">
+      <div>
+        <label>
+          Email:
+          <input type="email" id="email" />
+        </label>
+      </div>
+      <div style="margin-top:8px;">
+        <label>
+          Password:
+          <input type="password" id="password" />
+        </label>
+      </div>
+      <button type="submit" style="margin-top:10px;">Login</button>
+    </form>
+    <p id="login-message"></p>
+  </section>
+
+  <!-- 4. Keyboard shortcut Ctrl+S -->
+  <section class="row">
+    <h3>Keyboard Shortcut (Ctrl + S)</h3>
+    <p>Press <strong>Ctrl + S</strong> to trigger a custom save message (default browser save is blocked).</p>
+    <p id="shortcut-status" style="color: green;"></p>
+  </section>
+
+  <!-- 5. Click tracker app -->
+  <section class="row">
+    <h3>Click Tracker App</h3>
+    <div id="click-area">
+      <div class="click-box">Box 1</div>
+      <div class="click-box">Box 2</div>
+      <div class="click-box">Box 3</div>
+    </div>
+    <p>Total clicks: <strong id="click-count">0</strong></p>
+    <p>Last clicked: <strong id="last-clicked">None</strong></p>
+  </section>
+
+  <script>
+    // 1. Interactive counter button
+    const counterEl = document.getElementById("counter");
+    const incBtn = document.getElementById("increase");
+    const decBtn = document.getElementById("decrease");
+    const resetBtn = document.getElementById("reset");
+    let count = 0;
+
+    function updateCounter() {
+      counterEl.textContent = count;
+    }
+
+    incBtn.addEventListener("click", () => {
+      count++;
+      updateCounter();
+    }); 
+
+    decBtn.addEventListener("click", () => {
+      count--;
+      updateCounter();
+    });
+
+    resetBtn.addEventListener("click", () => {
+      count = 0;
+      updateCounter();
+    });
+
+    // 2. Hover-based menu (show/hide on mouseenter/leave)
+    const hoverMenu = document.getElementById("hover-menu");
+    const menuItems = document.getElementById("menu-items");
+
+    hoverMenu.addEventListener("mouseenter", () => {
+      menuItems.style.display = "block";
+    });
+
+    hoverMenu.addEventListener("mouseleave", () => {
+      menuItems.style.display = "none";
+    }); 
+
+    // 3. Login form validation 
+    const loginForm = document.getElementById("login-form");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const loginMessage = document.getElementById("login-message");
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault(); 
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      if (!email || !password) {
+        loginMessage.textContent = "Please enter both email and password.";
+        loginMessage.style.color = "red";
+      } else if (password.length < 6) {
+        loginMessage.textContent = "Password must be at least 6 characters.";
+        loginMessage.style.color = "red";
+      } else {
+        loginMessage.textContent = "Login successful (demo).";
+        loginMessage.style.color = "green";
+      }
+    });
+
+    // 4. Keyboard shortcut Ctrl + S
+    const shortcutStatus = document.getElementById("shortcut-status");
+
+    document.addEventListener("keydown", (e) => {
+      const isMac = navigator.userAgent.includes("Mac");
+      const ctrlOrMeta = isMac ? e.metaKey : e.ctrlKey;
+
+      if (ctrlOrMeta && e.key.toLowerCase() === "s") {
+        e.preventDefault();
+        shortcutStatus.textContent = "Custom save shortcut triggered at " + new Date().toLocaleTimeString();
+      }
+    }); 
+
+    // 5. Click tracker app
+    const clickArea = document.getElementById("click-area");
+    const clickCountEl = document.getElementById("click-count");
+    const lastClickedEl = document.getElementById("last-clicked");
+    let totalClicks = 0;
+
+    clickArea.addEventListener("click", (e) => {
+      if (e.target.classList.contains("click-box")) {
+        totalClicks++;
+        clickCountEl.textContent = totalClicks;
+        lastClickedEl.textContent = e.target.textContent;
+      }
+    });
+  </script>
+</body>
+</html>

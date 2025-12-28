@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Event Practice</title>
+  <style>
+    body { font-family: Arial, sans-serif;  }
+    .box { padding: 10px; border: 1px solid #ccc; display: inline-block; cursor: pointer; }
+    .mt { margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <h2>JS Event Practice</h2>
+
+  <!-- 1. Button click alert -->
+  <button id="alert-btn">Click me for alert</button> <br> <br> <hr>
+ 
+  <!-- 2. Change text color on hover -->
+  <p id="hover-text" class="mt">Hover over this text to change its color.</p><br> <br><hr>
+
+  <!-- 3 & 4. Log keyboard input + stop form reload -->
+  <form id="name-form" class="mt">
+    <label>
+      Type your name:
+      <input type="text" id="name-input" />
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+  <p>Typed keys log will appear in console.</p> <br> <br> <hr>
+
+  <!-- 5. Display clicked element text -->
+  <div class="mt">
+    <p>Click any of these items:</p>
+    <div id="click-area">
+      <span class="box">Item A</span>
+      <span class="box">Item B</span>
+      <span class="box">Item C</span>
+    </div>
+    <p class="mt">You clicked: <strong id="clicked-output">Nothing yet</strong></p>
+  </div>
+
+  <script>
+    // 1. Button click alert
+    const alertBtn = document.getElementById("alert-btn");
+    alertBtn.addEventListener("click", () => {
+      alert("Button was clicked!"); 
+    });
+
+    // 2. Change text color on hover
+    const hoverText = document.getElementById("hover-text");
+    hoverText.addEventListener("mouseover", () => {
+      hoverText.style.color = "red";
+    }); 
+    hoverText.addEventListener("mouseout", () => {
+      hoverText.style.color = "";
+    });
+
+    // 3. Log keyboard input
+    const nameInput = document.getElementById("name-input");
+    nameInput.addEventListener("keydown", (e) => {
+      console.log("Key pressed:", e.key);
+    });
+
+    // 4. Stop form reload 
+    const nameForm = document.getElementById("name-form");
+    nameForm.addEventListener("submit", (e) => {
+      e.preventDefault(); // stops page reload
+      console.log("Form submit prevented");
+    }); 
+
+    // 5. Display clicked element text
+    const clickArea = document.getElementById("click-area");
+    const clickedOutput = document.getElementById("clicked-output");
+
+    clickArea.addEventListener("click", (e) => {
+      if (e.target.classList.contains("box")) {
+        clickedOutput.textContent = e.target.textContent;
+      }
+    });
+  </script>
+</body>
+</html>
