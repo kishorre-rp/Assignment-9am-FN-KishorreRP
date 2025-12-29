@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task 4</title>
+    </head>
+<body>
+  <input id="username" placeholder="Your name">
+  <button onclick="saveName()">Save Name</button>
+  <button onclick="loadName()">Load Name</button>
+  <p id="output"></p>
+
+  <script>
+    function saveName() {
+      const name = document.getElementById('username').value;
+    
+      localStorage.setItem('userName', JSON.stringify({ name, savedAt: new Date().toISOString() }));
+      document.getElementById('output').innerHTML = ' Saved!';
+    }
+
+    function loadName() {
+      
+      const saved = localStorage.getItem('userName');
+      if (saved) {
+        const user = JSON.parse(saved);
+        document.getElementById('output').innerHTML = 
+          ` Welcome back, ${user.name}! (Saved: ${new Date(user.savedAt).toLocaleString()})`;
+      } else {
+        document.getElementById('output').innerHTML = 'No name saved yet';
+      }
+    }
+  </script>
+</body>
+</html>
