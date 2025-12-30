@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Static Webpage: -->
+
+    <div class="card">
+        <h5>Product Name</h5>
+        <p>₹1499</p>
+    </div>
+
+    <!-- Change to Dynamic Webpage: -->
+
+    <script>
+
+    function ProductCard({ name, price, description }) {
+    return (
+    <div className="card">
+        <div className="card-body">
+            <h5>{name}</h5>
+            <p>₹{price}</p>
+            <p>{description}</p>
+        </div>
+    </div>
+    );
+    }
+    function App() {
+    const products = [{name: "Pro Template", price: 1499, desc: "..."}];
+    return (
+    <div className="row">
+        {products.map(p =>
+        <ProductCard key={p.id} {...p} />)}
+    </div>
+    );
+    }
+
+    </script>
+
+</body>
+
+</html>
