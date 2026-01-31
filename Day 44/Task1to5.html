@@ -1,0 +1,45 @@
+<!-- 
+1.
+
+Table (in my words): A digital spreadsheet inside a database that stores related data in neat rows (records) and columns (fields), 
+like a class register with student names, ages, and marks all organized together.
+
+2.
+
+NOT NULL vs UNIQUE:
+
+NOT NULL	                          UNIQUE
+
+Cannot be empty	               Cannot be duplicate
+email must have value	       email must be different
+NULL  forbidden	               Same value OK if not NULL
+Data presence	               Data uniqueness
+
+3.
+
+Why PRIMARY KEY is Important 
+
+A primary key is essential in a relational database because it acts as a unique identifier 
+for each row (or record) in a table. It ensures that no two records in a table are identical 
+
+
+4.
+
+
+DEFAULT Syntax
+sql
+CREATE TABLE orders (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  status VARCHAR(20) DEFAULT 'pending', 
+  
+);
+
+
+5.
+
+FOREIGN KEY:
+
+A foreign key is a field (or collection of fields) in
+ one database table that uniquely identifies a row in another table, acting as a cross-reference to link them.
+
+-->
