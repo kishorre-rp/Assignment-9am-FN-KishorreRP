@@ -1,0 +1,62 @@
+<!-- 
+
+1.
+     PRODUCTS TABLE     ← Table Name
+
+  id     name          price        ← COLUMNS (Headers)
+
+   1   React Course     1499        ← ROW 1
+
+   2    CSS Kit           799        ← ROW 2
+
+                       
+   Primary Key       Data Types
+     (Unique ID)     (INT, VARCHAR)
+     
+     
+2.
+
+     Databases in Daily Life:
+
+App/Service	Database Used:
+
+WhatsApp	     SQLite (local), PostgreSQL
+Instagram	     PostgreSQL, Cassandra
+Gmail	         BigTable, Spanner
+Amazon	         DynamoDB, Aurora    
+
+
+
+3.
+
+1. CONNECT: mysql -u root -p
+   
+2. LIST: SHOW DATABASES;
+   
+3. CREATE: CREATE DATABASE shop;
+   USE shop;
+   
+4. STRUCTURE: CREATE TABLE products (id INT, name VARCHAR(50), price INT);
+   
+5. ADD DATA: INSERT INTO products VALUES (1,'React Course',1499);
+   
+6. QUERY: SELECT * FROM products WHERE price < 1000;  ← 80% TIME HERE
+   
+7. MODIFY: UPDATE/DELETE 
+
+
+4.
+
+File System vs Database:
+
+File System	                               Database
+Excel/CSV files	                   MySQL/PostgreSQL
+Manual search	                   SELECT * WHERE name='John'
+Duplicate data OK	               No duplicates (constraints)
+     
+     
+
+
+
+
+     -->
