@@ -1,0 +1,56 @@
+<!-- 1. GROUP BY vs Window Functions:
+
+GROUP BY	                            Window Functions
+Collapses rows (1 row per group)	Keeps ALL rows + adds column
+AVG(salary) per dept	            AVG(salary) OVER() per row
+Aggregation	                        Ranking/Calculation
+
+-- GROUP BY:
+SELECT dept_id, AVG(salary) FROM employees GROUP BY dept_id;
+
+-- Window :
+SELECT full_name, salary, AVG(salary) OVER() as company_avg FROM employees;
+
+
+
+2. PARTITION BY:
+Divides data into groups (like mini-tables)
+
+
+SELECT full_name, salary,
+       ROW_NUMBER() OVER(PARTITION BY dept_id ORDER BY salary DESC) as dept_rank
+FROM employees;
+Development = Partition 1, Sales = Partition 2
+
+
+
+3. ROW_NUMBER vs RANK:
+ROW_NUMBER()	                 RANK()
+1,2,3 (no ties)         	1,2,2 (ties share)
+Unique per row	            Skips after ties
+
+SELECT full_name, salary,
+       ROW_NUMBER() OVER(ORDER BY salary DESC) as row_num,
+       RANK() OVER(ORDER BY salary DESC) as rank_num
+FROM employees;
+
+
+
+
+4. CTE Definition:
+CTE = Common Table Expression = temporary named result set
+
+
+WITH high_earners AS (
+    SELECT * FROM employees WHERE salary > 50000
+)
+SELECT * FROM high_earners;
+
+
+5. Why CTE is better than Subquery:
+
+CTE 	                   Subquery 
+Readable (named)	 Nested (SELECT...)
+Reusable	         Copy-paste
+Debuggable	         Hard to test 
+-->
