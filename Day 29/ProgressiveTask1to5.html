@@ -28,7 +28,7 @@
     <h2 id="main-title" class="mb-3" style="align-self: auto;">Product Showcase</h2>
 
     <p class="text-muted">
-      Products created using JavaScript classes, objects, methods, inheritance, and array methods (forEach, filter, reduce).
+      Products created using JavaScript classes
     </p>
 
     <!-- New modern JS controls -->
@@ -337,7 +337,7 @@
           
           if (success) {
             apiOutput.innerHTML = `
-              ✅ <strong>API Success!</strong><br>
+               <strong>API Success!</strong><br>
               Products found: ${apiProducts.length}<br>
               First product: ${apiProducts[0]?.name}<br>
               Fetched: ${timestamp}
@@ -348,7 +348,7 @@
             renderProducts();
           }
         } catch (error) {
-          apiOutput.innerHTML = `❌ API Error: ${error.message}`;
+          apiOutput.innerHTML = ` API Error: ${error.message}`;
           apiSection.style.display = "block";
         } finally {
           fetchApiBtn.disabled = false;
@@ -381,7 +381,7 @@
         
        
         noteOutput.innerHTML = `
-          ✅ <strong>Saved:</strong> "${value}"<br>
+           <strong>Saved:</strong> "${value}"<br>
           <small>Total notes: ${userDataManager.getNoteCount()}</small>
         `;
         noteOutput.className = "text-success mt-2";
