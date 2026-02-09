@@ -1,0 +1,62 @@
+<!-- 1. INNER JOIN vs LEFT JOIN:
+
+INNER JOIN                             LEFT JOIN
+Matching rows ONLY              ALL  left table + matches
+Excludes non-matches            Includes with NULLs
+employees JOIN departments      employees LEFT JOIN departments
+
+Example:
+
+employees: Shanthosh(id=1), Kishorre(id=2)
+departments: Development(id=1), HR(id=3)
+
+INNER JOIN: Shanthosh + Development (ONLY MATCH)
+LEFT JOIN: Shanthosh+Dev, Kishorre+NULL (ALL employees)
+
+
+2. What is Normalization?
+
+
+Normalization = Organizing database tables to eliminate redundancy and ensure data integrity through rules (1NF, 2NF,
+3NF).
+
+Before: emp_id, name, dept_name, dept_location (redundant dept data)
+After: employees(dept_id) + departments(id, name, location)
+
+
+
+
+3. 1NF (First Normal Form):
+
+1NF = "No repeating groups" - Every column contains atomic values (single value), no lists/repeated data.
+
+text
+ NOT 1NF: skills = "SQL,React,JS" (list in one cell)
+ 1NF: skills table (sql), (react), (js) - separate rows
+
+
+
+4. JOIN vs Subquery - When?
+
+
+Use JOIN                          Use Subquery
+Table relationships              Single value comparison
+Multiple columns                 WHERE salary > (SELECT AVG...)
+Complex filtering                Dynamic values (MIN/MAX/AVG)
+Performance                      Readability
+
+
+
+
+5. Identify Foreign Key :
+
+
+Foreign Key = Column that references Primary Key of another table.
+
+In the schema:
+
+
+employees.dept_id → departments.id (FK)
+payroll.emp_id → employees.id (FK)
+attendance.emp_id → employees.id (FK) 
+-->
