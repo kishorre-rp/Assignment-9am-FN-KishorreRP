@@ -1,0 +1,18 @@
+<!-- JOINs 
+ it connect tables via foreign keys. 
+ INNER JOIN = matching records only, 
+ LEFT JOIN = all left table + matches.
+
+Normalization: eliminates redundancy:
+- 1NF: Atomic values 
+- 2NF: No partial dependencies  
+- 3NF: No transitive dependencies
+
+Example: Instead of employees(dept_name, location), use employees(dept_id) + departments(id, name, location).
+
+Benefits: Save space, maintain integrity. 
+
+sql:
+
+SELECT e.name, d.name 
+FROM employees e JOIN departments d ON e.dept_id = d.id; -->
